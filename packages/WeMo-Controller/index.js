@@ -8,7 +8,7 @@ const setupServer = require(`${dir.server}setup-server`)
 const startServer = require(`${dir.server}start-server`)
 
 // Load Middleware
-const toggleDevice = require(`${dir.middleware}toggle-device`)
+const toggleDevices = require(`${dir.middleware}toggle-devices`)
 
 wemoClient.init()
 
@@ -22,7 +22,14 @@ serverSettings.get(
 serverSettings.get(
 	'/toggle-device/:name',
 	(req, res) => res.send(
-		toggleDevice(wemoClient)(req.params.name)
+		toggleDevices(wemoClient)([req.params.name])
+	)
+)
+
+serverSettings.put(
+	'/toggle-devices',
+	(req, res) => res.send(
+		toggleDevices(wemoClient)(req.body.deviceNames)
 	)
 )
 
