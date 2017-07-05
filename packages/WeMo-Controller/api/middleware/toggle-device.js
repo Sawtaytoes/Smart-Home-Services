@@ -1,5 +1,4 @@
 const Promise = require('bluebird')
-const Wemo = require('wemo-client')
 
 const dir = require(`${global.baseDir}/global-dirs`)
 const logger = require(`${dir.utils}/logger`)
@@ -21,5 +20,5 @@ module.exports = ({ deviceClients }) => deviceName => {
 
 	Promise.resolve(getCurrentState(deviceClient))
 	.then(toggleDevice(deviceClient))
-	.catch(err => console.error(err))
+	.catch(err => logger.logError(err))
 }
