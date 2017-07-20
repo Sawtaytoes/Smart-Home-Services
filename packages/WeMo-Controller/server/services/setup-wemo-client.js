@@ -1,31 +1,51 @@
 const Wemo = require('wemo-client')
 
-const dir = require(`${global.baseDir}/global-dirs`)
-const logger = require(`${dir.utils}/logger`)
+const dir = require(`${global.baseDir}global-dirs`)
+const logger = require(`${dir.utils}logger`)
 
-const wemo = new Wemo()
 const deviceClients = new Map()
 
-const storeWemoDeviceClient = deviceClient => deviceClients.set(deviceClient.device.friendlyName, deviceClient)
+const logBinaryStateChange = deviceInfo => value => (
+	logger.log(deviceInfo.friendlyName, 'set to:', value)
+)
 
-const discoverDevices = () => (
-	wemo.discover((_, deviceInfo) => {
-		logger.log('Wemo Device Found: %j', deviceInfo.friendlyName)
+const logDeviceFound = deviceInfo => (
+	logger.log('Device Found: %s %j', deviceInfo.host, deviceInfo.friendlyName)
+)
+
+const logError = err => logger.logError('Error:', err.code)
+
+const removeWemoDeviceFromStore = (deviceClient, friendlyName) => (
+	deviceClients.delete(friendlyName)
+)
+
+const addWemoDeviceToStore = (deviceClient, friendlyName) => (
+	deviceClients.set(friendlyName, deviceClient)
+)
+
+const onDeviceDiscovery = wemo => (_, deviceInfo) => {
+		logDeviceFound(deviceInfo)
 
 		if (!deviceInfo) return
 
 		const deviceClient = wemo.client(deviceInfo)
 
-		deviceClient.on('error', err => logger.error('Error:', err.code))
-		deviceClient.on('binaryState', value => logger.log(deviceInfo.friendlyName, 'set to:', value))
+		deviceClient
+		.on('binaryState', logBinaryStateChange(deviceInfo))
+		.on('error', logError)
 
-		storeWemoDeviceClient(deviceClient)
-	})
-)
+		const { friendlyName } = deviceClient.device
 
-const init = () => (
-	discoverDevices()
-)
+		removeWemoDeviceFromStore(deviceClient, friendlyName)
+		addWemoDeviceToStore(deviceClient, friendlyName)
+	}
+
+const discoverDevices = () => {
+	const wemo = new Wemo()
+	wemo.discover(onDeviceDiscovery(wemo))
+}
+
+const init = discoverDevices
 
 const update = init
 

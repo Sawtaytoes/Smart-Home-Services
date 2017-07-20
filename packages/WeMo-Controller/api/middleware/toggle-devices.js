@@ -1,16 +1,20 @@
 const Promise = require('bluebird')
 
-const dir = require(`${global.baseDir}/global-dirs`)
-const logger = require(`${dir.utils}/logger`)
+const dir = require(`${global.baseDir}global-dirs`)
+const logger = require(`${dir.utils}logger`)
 
 const POWERED_OFF = 0
 const POWERED_ON = 1
 
-const isDeviceOnline = deviceClient => deviceClient
-
 const getDeviceClient = deviceClients => deviceName => deviceClients.get(deviceName)
 
-const getNextState = deviceClientStates => Number(!deviceClientStates.some(state => Number(state) === POWERED_ON))
+const isPoweredOff = state => Number(state) === POWERED_OFF
+const getNextState = deviceClientStates => (
+	Number(
+		deviceClientStates
+		.every(isPoweredOff)
+	)
+)
 
 const getCurrentState = deviceClient => (
 	Promise.promisify(deviceClient.getBinaryState, { context: deviceClient })()
@@ -43,7 +47,7 @@ module.exports = ({ deviceClients }) => deviceNames => {
 	const selectedDeviceClients = (
 		deviceNames
 		.map(getDeviceClient(deviceClients))
-		.filter(isDeviceOnline)
+		.filter(Boolean)
 	)
 
 	if (!selectedDeviceClients.length) return 'No Devices exist under those names.'
