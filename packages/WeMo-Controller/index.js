@@ -9,6 +9,8 @@ const startServer = require(`${dir.server}start-server`)
 
 // Load Middleware
 const toggleDevices = require(`${dir.middleware}toggle-devices`)
+const turnOffDevices = require(`${dir.middleware}turn-off-devices`)
+const turnOnDevices = require(`${dir.middleware}turn-on-devices`)
 
 wemoClient.init()
 
@@ -30,6 +32,34 @@ serverSettings.put(
 	'/toggle-devices',
 	(req, res) => res.send(
 		toggleDevices(wemoClient)(req.body.deviceNames)
+	)
+)
+
+serverSettings.get(
+	'/turn-off-device/:name',
+	(req, res) => res.send(
+		turnOffDevices(wemoClient)([req.params.name])
+	)
+)
+
+serverSettings.put(
+	'/turn-off-devices',
+	(req, res) => res.send(
+		turnOffDevices(wemoClient)(req.body.deviceNames)
+	)
+)
+
+serverSettings.get(
+	'/turn-on-device/:name',
+	(req, res) => res.send(
+		turnOnDevices(wemoClient)([req.params.name])
+	)
+)
+
+serverSettings.put(
+	'/turn-on-devices',
+	(req, res) => res.send(
+		turnOnDevices(wemoClient)(req.body.deviceNames)
 	)
 )
 

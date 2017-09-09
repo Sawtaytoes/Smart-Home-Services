@@ -24,21 +24,21 @@ const addWemoDeviceToStore = (deviceClient, friendlyName) => (
 )
 
 const onDeviceDiscovery = wemo => (_, deviceInfo) => {
-		logDeviceFound(deviceInfo)
+	logDeviceFound(deviceInfo)
 
-		if (!deviceInfo) return
+	if (!deviceInfo) return
 
-		const deviceClient = wemo.client(deviceInfo)
+	const deviceClient = wemo.client(deviceInfo)
 
-		deviceClient
-		.on('binaryState', logBinaryStateChange(deviceInfo))
-		.on('error', logError)
+	deviceClient
+	.on('binaryState', logBinaryStateChange(deviceInfo))
+	.on('error', logError)
 
-		const { friendlyName } = deviceClient.device
+	const { friendlyName } = deviceClient.device
 
-		removeWemoDeviceFromStore(deviceClient, friendlyName)
-		addWemoDeviceToStore(deviceClient, friendlyName)
-	}
+	removeWemoDeviceFromStore(deviceClient, friendlyName)
+	addWemoDeviceToStore(deviceClient, friendlyName)
+}
 
 const discoverDevices = () => {
 	const wemo = new Wemo()
