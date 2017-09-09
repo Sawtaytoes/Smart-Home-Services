@@ -22,7 +22,7 @@ const powerOnDevice = deviceClient => (
 	Promise.promisify(deviceClient.setBinaryState, { context: deviceClient })(POWERED_ON)
 )
 
-const turnOffDevices = deviceClients => () => (
+const turnOnDevices = deviceClients => () => (
 	Promise.all(
 		deviceClients
 		.map(powerOnDevice)
@@ -45,7 +45,7 @@ module.exports = ({ deviceClients }) => deviceNames => {
 		.map(getCurrentState)
 	)
 	.then(getPoweredOffDevices)
-	.then(turnOffDevices(selectedDeviceClients))
+	.then(turnOnDevices(selectedDeviceClients))
 	.then(() => logger.log('Device states successfully changed.'))
 	.catch(err => logger.logError(err))
 }
