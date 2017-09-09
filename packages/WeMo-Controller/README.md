@@ -43,11 +43,8 @@ module.exports = {
 	protocol: 'http',                             // Using `https` requires valid certificates.
 	hostname: '0.0.0.0',                          // Can be 0.0.0.0 for binding to all ports.
 	port: 3000,                                   // Port of webserver.
-	// proxyPort: 3001,                           // Optional. Will be `port + 1` if not defined.
 }
 ```
-
-> *NOTE:* `apiToken` is required to cache groups and scenes from LIFX's HTTP API.
 
 #### Override Default Config
 
