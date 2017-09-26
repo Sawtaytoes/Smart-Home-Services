@@ -31,7 +31,7 @@ serverSettings.get(
 serverSettings.put(
 	'/toggle-devices',
 	(req, res) => res.send(
-		toggleDevices(wemoClient)(req.body.deviceNames)
+		toggleDevices(wemoClient)(req.body.names)
 	)
 )
 
@@ -45,7 +45,7 @@ serverSettings.get(
 serverSettings.put(
 	'/turn-off-devices',
 	(req, res) => res.send(
-		turnOffDevices(wemoClient)(req.body.deviceNames)
+		turnOffDevices(wemoClient)(req.body.names)
 	)
 )
 
@@ -59,7 +59,7 @@ serverSettings.get(
 serverSettings.put(
 	'/turn-on-devices',
 	(req, res) => res.send(
-		turnOnDevices(wemoClient)(req.body.deviceNames)
+		turnOnDevices(wemoClient)(req.body.names)
 	)
 )
 
