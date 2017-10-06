@@ -4,8 +4,8 @@ const cors = require('cors')
 const express = require('express')
 const helmet = require('helmet')
 
-const dir = require(`${global.baseDir}/global-dirs`)
-const config = require(`${dir.configs}config-settings`)
+const dir = require(`${global.baseDir}/directories`)
+const config = require(`${dir.configs}config`)
 
 
 // --------------------------------------------------------

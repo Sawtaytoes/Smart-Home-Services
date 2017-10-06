@@ -1,6 +1,6 @@
 const Promise = require('bluebird')
 
-const dir = require(`${global.baseDir}global-dirs`)
+const dir = require(`${global.baseDir}directories`)
 const logger = require(`${dir.utils}logger`)
 
 const POWERED_OFF = 0
@@ -8,10 +8,12 @@ const POWERED_ON = 1
 
 const getDeviceClient = deviceClients => deviceName => deviceClients.get(deviceName)
 
-const isPoweredOn = state => Number(state) === POWERED_ON
-const getPoweredOnDevices = deviceClientStates => (
-	deviceClientStates
-	.filter(isPoweredOn)
+const isPoweredOff = state => Number(state) === POWERED_OFF
+const getNextState = deviceClientStates => (
+	Number(
+		deviceClientStates
+		.every(isPoweredOff)
+	)
 )
 
 const getCurrentState = deviceClient => (
@@ -22,10 +24,20 @@ const powerOffDevice = deviceClient => (
 	Promise.promisify(deviceClient.setBinaryState, { context: deviceClient })(POWERED_OFF)
 )
 
-const turnOffDevices = deviceClients => () => (
+const powerOnDevice = deviceClient => (
+	Promise.promisify(deviceClient.setBinaryState, { context: deviceClient })(POWERED_ON)
+)
+
+const changeDeviceState = state => (
+	state === POWERED_OFF
+	? powerOffDevice
+	: powerOnDevice
+)
+
+const toggleDevices = deviceClients => nextState => (
 	Promise.all(
 		deviceClients
-		.map(powerOffDevice)
+		.map(changeDeviceState(nextState))
 	)
 )
 
@@ -44,8 +56,8 @@ module.exports = ({ deviceClients }) => deviceNames => {
 		selectedDeviceClients
 		.map(getCurrentState)
 	)
-	.then(getPoweredOnDevices)
-	.then(turnOffDevices(selectedDeviceClients))
+	.then(getNextState)
+	.then(toggleDevices(selectedDeviceClients))
 	.then(() => logger.log('Device states successfully changed.'))
 	.catch(err => logger.logError(err))
 }
