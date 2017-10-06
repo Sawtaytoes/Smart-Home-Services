@@ -1,6 +1,6 @@
 const Wemo = require('wemo-client')
 
-const dir = require(`${global.baseDir}global-dirs`)
+const dir = require(`${global.baseDir}directories`)
 const logger = require(`${dir.utils}logger`)
 
 const deviceClients = new Map()

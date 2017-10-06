@@ -2,15 +2,15 @@
 global.baseDir = `${__dirname}/`
 
 // Load Config settings
-const dir = require(`${global.baseDir}global-dirs`)
-const wemoClient = require(`${dir.services}setup-wemo-client`)
-const setupServer = require(`${dir.server}setup-server`)
-const startServer = require(`${dir.server}start-server`)
+const dir = require(`${global.baseDir}directories`)
+const wemoClient = require(`${dir.services}wemoClient`)
+const setupServer = require(`${dir.server}setupServer`)
+const startServer = require(`${dir.server}startServer`)
 
 // Load Middleware
-const toggleDevices = require(`${dir.middleware}toggle-devices`)
-const turnOffDevices = require(`${dir.middleware}turn-off-devices`)
-const turnOnDevices = require(`${dir.middleware}turn-on-devices`)
+const toggleDevices = require(`${dir.middleware}toggleDevices`)
+const turnOffDevices = require(`${dir.middleware}turnOffDevices`)
+const turnOnDevices = require(`${dir.middleware}turnOnDevices`)
 
 wemoClient.init()
 
