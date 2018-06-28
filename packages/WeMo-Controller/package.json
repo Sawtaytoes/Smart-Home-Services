@@ -14,19 +14,19 @@
     "npm": "^5.4.1"
   },
   "dependencies": {
-    "bluebird": "^3.5.0",
-    "body-parser": "^1.18.2",
-    "compression": "^1.7.0",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.2",
     "cors": "^2.8.4",
-    "express": "^4.15.5",
+    "express": "^4.16.3",
     "express-sslify": "^1.2.0",
-    "helmet": "^3.8.1",
-    "node-fetch": "^1.7.3",
-    "wemo-client": "^0.14.0"
+    "helmet": "^3.12.1",
+    "node-fetch": "^2.1.2",
+    "wemo-client": "^0.15.0"
   },
   "devDependencies": {
-    "ava": "^0.22.0",
-    "eslint": "^4.7.2",
-    "nodemon": "^1.12.1"
+    "ava": "^0.25.0",
+    "eslint": "^5.0.1",
+    "nodemon": "^1.17.5"
   }
 }
