@@ -24,9 +24,9 @@ const addWemoDeviceToStore = (deviceClient, friendlyName) => (
 )
 
 const onDeviceDiscovery = wemo => (_, deviceInfo) => {
-	logDeviceFound(deviceInfo)
-
 	if (!deviceInfo) return
+
+	logDeviceFound(deviceInfo)
 
 	const deviceClient = wemo.client(deviceInfo)
 
