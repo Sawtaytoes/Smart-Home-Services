@@ -8,13 +8,11 @@
     "eslint:recommended"
   ],
   "parserOptions": {
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true
-    }
+    "ecmaVersion": 9
   },
   "rules": {
     "no-console": 0,
-    "no-unused-vars": ["error", {
+    "no-unused-vars": ["warn", {
       "argsIgnorePattern": "^_*$",
       "varsIgnorePattern": "^_*$"
     }],
