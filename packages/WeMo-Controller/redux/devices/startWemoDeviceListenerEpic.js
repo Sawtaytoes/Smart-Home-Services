@@ -1,5 +1,5 @@
-const { bindNodeCallback, of } = require('rxjs')
-const { catchError, ignoreElements, map, mergeMap, switchMap, tap } = require('rxjs/operators')
+const { bindNodeCallback, fromEvent, merge, Observable } = require('rxjs')
+const { catchError, filter, ignoreElements, map, mergeMap, switchMap, tap } = require('rxjs/operators')
 const { ofType } = require('redux-observable')
 
 const {
@@ -12,29 +12,68 @@ const startWemoDeviceListenerEpic = (
 	action$
 	.pipe(
 		ofType(ADD_WEMO_CLIENT),
+		// tap(t => {
+		// 	t.wemoClient
+		// 	.discover(console.log)
+		// }),
 		mergeMap(({
 			wemoClient,
 		}) => (
-			bindNodeCallback(
+			// bindNodeCallback(
+			// 	wemoClient
+			// 	.discover
+			// 	.bind(wemoClient)
+			// )()
+			Observable
+			.create((
+				observer,
+			) => {
 				wemoClient
-				.discover
-				.bind(wemoClient)
-			)()
+				.discover((
+					error,
+					deviceInfo,
+				) => {
+					observer
+					.next(deviceInfo)
+				})
+			})
 			.pipe(
-				// switchMap(() => (
-				// 	bindNodeCallback(
-				// 		wemoClient
-				// 		.getInfo
-				// 		.bind(wemoClient)
-				// 	)()
-				// )),
-				tap(console.log),
-				catchError(error => (
-					console.log(error)|| // TEMP
-					of({ error, type: 'SOME_ERROR' })
+				filter(Boolean),
+				switchMap((
+					deviceInfo,
+				) => (
+					merge(
+						(
+							fromEvent(
+								wemoClient.client(deviceInfo),
+								'binaryState',
+							)
+							.pipe(
+								map(value => ({
+									friendlyName: deviceInfo.friendlyName,
+									type: 'DEVICE_INFO',
+									value: value !== '0' ? 'ON' : 'OFF',
+								})),
+							)
+						),
+						(
+							fromEvent(
+								wemoClient.client(deviceInfo),
+								'error',
+							)
+							.pipe(
+								map(error => ({
+									error,
+									friendlyName: deviceInfo.friendlyName,
+									type: 'SOME_ERROR',
+								})),
+							)
+						),
+					)
 				)),
 			)
 		)),
+		tap(console.log),
 		ignoreElements(),
 	)
 )
