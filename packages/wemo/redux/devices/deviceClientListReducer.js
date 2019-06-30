@@ -1,26 +1,26 @@
 const { createMappedNamespaceReducer, createReducer } = require('@redux-observable-backend/redux-utils')
 
 const {
-	ADD_POWER_STATE,
-	// REMOVE_POWER_STATE,
+	ADD_DEVICE_CLIENT,
+	REMOVE_DEVICE_CLIENT,
 } = require('./actions')
 
 const initialState = null
 
 const reducerActions = {
-	[ADD_POWER_STATE]: (
+	[ADD_DEVICE_CLIENT]: (
 		prevState,
-		{ powerState },
+		{ deviceClient },
 	) => (
-		powerState
+		deviceClient
 	),
 
-	// [REMOVE_POWER_STATE]: () => (
-	// 	initialState
-	// ),
+	[REMOVE_DEVICE_CLIENT]: () => (
+		initialState
+	),
 }
 
-const powerStatesListReducer = (
+const deviceClientListReducer = (
 	createMappedNamespaceReducer(
 		createReducer(
 			reducerActions,
@@ -29,4 +29,4 @@ const powerStatesListReducer = (
 	)
 )
 
-module.exports = powerStatesListReducer
+module.exports = deviceClientListReducer

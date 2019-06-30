@@ -1,54 +1,43 @@
 const { catchEpicError, ofNamespace } = require('@redux-observable-backend/redux-utils')
-const { distinctUntilChanged, filter, ignoreElements, map, mergeMap, switchMap, takeUntil, tap } = require('rxjs/operators')
+const { ignoreElements, mergeMap, switchMap, takeUntil } = require('rxjs/operators')
 const { fromEvent, throwError } = require('rxjs')
 const { ofType } = require('redux-observable')
 
 const {
-	ADD_DEVICE,
-	REMOVE_DEVICE,
+	ADD_DEVICE_CLIENT,
+	REMOVE_DEVICE_CLIENT,
 } = require('./actions')
-
-const { selectWemoClient } = require('./selectors')
 
 const errorListenerEpic = (
 	action$,
-	state$,
 ) => (
-	state$
+	action$
 	.pipe(
-		map(selectWemoClient()),
-		distinctUntilChanged(),
-		filter(Boolean),
-		switchMap(wemoClient => (
-			action$
+		ofType(ADD_DEVICE_CLIENT),
+		mergeMap(({
+			deviceClient,
+			namespace,
+		}) => (
+			fromEvent(
+				deviceClient,
+				'error',
+			)
 			.pipe(
-				ofType(ADD_DEVICE),
-				mergeMap(({
-					device,
-					namespace,
-				}) => (
-					fromEvent(
-						wemoClient.client(device),
-						'error',
-					)
+				takeUntil(
+					action$
 					.pipe(
-						takeUntil(
-							action$
-							.pipe(
-								ofType(
-									ADD_DEVICE,
-									REMOVE_DEVICE,
-								),
-								ofNamespace(namespace),
-							)
+						ofType(
+							ADD_DEVICE_CLIENT,
+							REMOVE_DEVICE_CLIENT,
 						),
-						switchMap(error => (
-							throwError(`
-								${device.friendlyName}
-								${error}
-							`)
-						)),
+						ofNamespace(namespace),
 					)
+				),
+				switchMap(error => (
+					throwError(`
+						${deviceClient.device.friendlyName}
+						${error}
+					`)
 				)),
 			)
 		)),

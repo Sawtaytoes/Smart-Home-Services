@@ -1,29 +1,33 @@
 const { combineEpics } = require('redux-observable')
 const { combineReducers } = require('redux')
 
-const devicesListReducer = require('./devicesListReducer')
+const binaryStateListenerEpic = require('./binaryStateListenerEpic')
+const binaryStateListReducer = require('./binaryStateListReducer')
+const deviceClientListReducer = require('./deviceClientListReducer')
 const errorListenerEpic = require('./errorListenerEpic')
-const powerStateListenerEpic = require('./powerStateListenerEpic')
-const powerStatesListReducer = require('./powerStatesListReducer')
 const requestsEpic = require('./requestsEpic')
 const startWemoClientEpic = require('./startWemoClientEpic')
+const toggleDeviceEpic = require('./toggleDeviceEpic')
+const toggleDevicesEpic = require('./toggleDevicesEpic')
 const wemoClientReducer = require('./wemoClientReducer')
 const wemoDeviceListenerEpic = require('./wemoDeviceListenerEpic')
 
 const devicesEpic = (
 	combineEpics(
+		binaryStateListenerEpic,
 		errorListenerEpic,
-		powerStateListenerEpic,
 		requestsEpic,
 		startWemoClientEpic,
+		toggleDeviceEpic,
+		toggleDevicesEpic,
 		wemoDeviceListenerEpic,
 	)
 )
 
 const devicesReducer = (
 	combineReducers({
-		devicesList: devicesListReducer,
-		powerStatesList: powerStatesListReducer,
+		binaryStateList: binaryStateListReducer,
+		deviceClientList: deviceClientListReducer,
 		wemoClient: wemoClientReducer,
 	})
 )
