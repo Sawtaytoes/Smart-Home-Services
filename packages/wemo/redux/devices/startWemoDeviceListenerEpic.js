@@ -12,18 +12,9 @@ const startWemoDeviceListenerEpic = (
 	action$
 	.pipe(
 		ofType(ADD_WEMO_CLIENT),
-		// tap(t => {
-		// 	t.wemoClient
-		// 	.discover(console.log)
-		// }),
 		mergeMap(({
 			wemoClient,
 		}) => (
-			// bindNodeCallback(
-			// 	wemoClient
-			// 	.discover
-			// 	.bind(wemoClient)
-			// )()
 			Observable
 			.create((
 				observer,
