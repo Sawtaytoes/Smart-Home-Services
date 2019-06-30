@@ -21,10 +21,10 @@ yarn
 To configure the Webpack listener, you have 3 options available to modify in your `./localConfig.js`:
 
 module.exports = {
-	// ... other config options ...
-	hostname,
-	port,
-	protocol,
+  // ... other config options ...
+  hostname,
+  port,
+  protocol,
 }
 
 ### LIFX HTTP API Token
@@ -32,8 +32,8 @@ Go to [LIFX's cloud settings page](https://cloud.lifx.com/settings) and create a
 
 ```js
 module.exports = {
-	// ... other config options ...
-	lifxApiToken: 'YOUR_LIFX_API_TOKEN',
+  // ... other config options ...
+  lifxApiToken: 'YOUR_LIFX_API_TOKEN',
 }
 ```
 
@@ -42,11 +42,11 @@ In `./projectConfig.js` or `./localConfig.js`, add a property `lifxLanClient` as
 
 ```js
 module.exports = {
-	lifxLanClient: {
-		debug: true,
-		messageHandlerTimeout: 2000,
-		resendMaxTimes: 3,
-	},
+  lifxLanClient: {
+    debug: true,
+    messageHandlerTimeout: 2000,
+    resendMaxTimes: 3,
+  },
 }
 ```
 
@@ -62,15 +62,15 @@ webSocket.onmessage = console.log
 webSocket.onerror = console.error
 webSocket.onclose = console.info
 webSocket.onopen = () => {
-	console.log('READY')
+  console.log('READY')
 
-	webSocket
-	.send(
-		JSON
-		.stringify({
-			sceneName: 'Late Night Computing',
-			type: 'REQUEST::TOGGLE_SCENE',
-		})
-	)
+  webSocket
+  .send(
+    JSON
+    .stringify({
+      sceneName: 'Late Night Computing',
+      type: 'REQUEST::TOGGLE_SCENE',
+    })
+  )
 }
 ```

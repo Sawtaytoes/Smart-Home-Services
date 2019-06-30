@@ -22,31 +22,32 @@ Your `localConfig.js` will look something like this:
 
 ```js
 module.exports = {
-	externalConnections: {
-		lifxApi: {
-			hostname: '',
-			port: 80,
-			protocol: 'ws',
-			protocolVersion: 'v1',
-		},
-	},
+  externalConnections: {
+    lifxApi: {
+      hostname: 'lifx.example.com',
+      port: 80,
+      protocol: 'ws',
+      protocolVersion: 'v1',
+    },
 
-	flicButtonServers: [{
-		hostname: 'raspberry-pi-1',
-		port: 5551,
-	}, {
-		hostname: 'raspberry-pi-2',
-		port: 5551,
-	}, {
-		hostname: 'raspberry-pi-2',
-		port: 5551,
-	}],
+    wemoApi: {
+      hostname: 'wemo.example.com',
+      port: 80,
+      protocol: 'ws',
+      protocolVersion: 'v1',
+    },
+  },
 
-	wemoApi: {
-		hostname: 'wemo.example.com',
-		port: 80,
-		protocol: 'http',
-	},
+  flicButtonServers: [{
+    hostname: 'raspberry-pi-1',
+    port: 5551,
+  }, {
+    hostname: 'raspberry-pi-2',
+    port: 5551,
+  }, {
+    hostname: 'raspberry-pi-2',
+    port: 5551,
+  }],
 }
 ```
 
@@ -60,17 +61,17 @@ webSocket.onmessage = console.log
 webSocket.onerror = console.error
 webSocket.onclose = console.info
 webSocket.onopen = () => {
-	console.log('READY')
+  console.log('READY')
 
-	webSocket
-	.send(
-		JSON
-		.stringify({
-			buttonId: '80:e4:da:86:44:9e',
-			pressCount: 1,
-			pressType: 'hold',
-			type: 'REQUEST::EXECUTE_BUTTON_PRESSES',
-		})
-	)
+  webSocket
+  .send(
+    JSON
+    .stringify({
+      buttonId: '80:e4:da:86:44:9e',
+      pressCount: 1,
+      pressType: 'hold',
+      type: 'REQUEST::EXECUTE_BUTTON_PRESSES',
+    })
+  )
 }
 ```
