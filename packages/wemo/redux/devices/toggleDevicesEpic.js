@@ -1,15 +1,15 @@
-const chalk = require('chalk')
-const { bindNodeCallback, from, of } = require('rxjs')
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
-const { filter, ignoreElements, map, mergeMap, pluck, tap } = require('rxjs/operators')
+const { groupBy, map, mergeMap, pluck, toArray } = require('rxjs/operators')
+const { from, of } = require('rxjs')
 const { ofType } = require('redux-observable')
 
-const { TOGGLE_DEVICES } = require('./actions')
-
 const {
-	selectBinaryState,
-	selectDeviceClient,
-} = require('./selectors')
+	TOGGLE_DEVICES,
+	turnOffDevices,
+	turnOnDevices,
+} = require('./actions')
+
+const { selectBinaryState } = require('./selectors')
 
 const toggleDevicesEpic = (
 	action$,
@@ -26,72 +26,49 @@ const toggleDevicesEpic = (
 					of(state$.value)
 					.pipe(
 						map(
-							selectDeviceClient({
+							selectBinaryState({
 								namespace: deviceName,
 							})
 						),
-						tap(deviceClient => (
-							!deviceClient
-							? (
-								console
-								.warn(
-									(
-										chalk
-										.redBright('[MISSING DEVICE]')
-									),
-									(
-										chalk
-										.bgRed(deviceName)
-									)
-								)
-							)
-							: (
-								console
-								.info(
-									(
-										chalk
-										.greenBright('[TOGGLE DEVICE]')
-									),
-									(
-										chalk
-										.bgGreen(deviceName)
-									)
-								)
-							)
-						)),
-						filter(Boolean),
-						mergeMap(deviceClient => (
-							of(state$.value)
-							.pipe(
-								map(
-									selectBinaryState({
-										namespace: deviceName,
-									})
-								),
-								map(powerState => ({
-									deviceClient,
-									powerState,
-								})),
-							)
-						))
+						map(binaryState => ({
+							binaryState,
+							deviceName,
+						}))
+					)
+				)),
+				groupBy(({
+					binaryState,
+				}) => (
+					binaryState
+				)),
+				mergeMap(groupedDevices$ => (
+					groupedDevices$
+					.pipe(
+						toArray(),
 					)
 				)),
 			)
 		)),
-		mergeMap(({
-			deviceClient,
-			powerState,
-		}) => (
-			bindNodeCallback(
-				deviceClient
-				.setBinaryState
-				.bind(deviceClient)
-			)(
-				(powerState + 1) % 2
+		mergeMap(groupedDevices => (
+			from(groupedDevices)
+			.pipe(
+				pluck('deviceName'),
+				toArray(),
+				map(deviceNames => ({
+					binaryState: groupedDevices[0].binaryState,
+					deviceNames,
+				})),
 			)
 		)),
+		map(({
+			binaryState,
+			deviceNames,
+		}) => (
+			binaryState
+			? turnOffDevices(deviceNames)
+			: turnOnDevices(deviceNames)
+		)),
 		catchEpicError(),
-		ignoreElements(),
 	)
 )
 
