@@ -1,4 +1,6 @@
 #!/usr/bin/env node
 require('better-module-alias')(__dirname)
 
-module.exports = {}
+module.exports = {
+	devices: require('$redux/devices').devices,
+}
