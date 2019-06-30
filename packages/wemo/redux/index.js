@@ -2,7 +2,10 @@ const { combineEpics } = require('redux-observable')
 const { combineReducers } = require('redux')
 const { webSocketsEpic, webSocketsReducers } = require('@redux-observable-backend/websocket')
 
-const { devicesEpic } = require('./devices')
+const {
+	devicesEpic,
+	devicesReducer,
+} = require('./devices')
 
 const rootEpic = (
 	combineEpics(
@@ -13,6 +16,7 @@ const rootEpic = (
 
 const rootReducers = {
 	...webSocketsReducers,
+	devices: devicesReducer,
 }
 
 const rootReducer = (

@@ -1,4 +1,5 @@
 const WemoClient = require('wemo-client')
+const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { interval } = require('rxjs')
 const { map, startWith, switchMap } = require('rxjs/operators')
 const { ofTaskName, tasks } = require('@redux-observable-backend/node')
@@ -30,6 +31,7 @@ const startWemoClientEpic = (
 				map(addWemoClient),
 			)
 		)),
+		catchEpicError(),
 	)
 )
 

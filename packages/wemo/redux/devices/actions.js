@@ -1,7 +1,25 @@
-const ADD_WEMO_CLIENT = 'BUTTON_PRESSES::ADD_WEMO_CLIENT'
-const CAPTURE_BUTTON_PRESSES = 'BUTTON_PRESSES::CAPTURE_BUTTON_PRESSES'
-const EXECUTE_BUTTON_PRESSES = 'BUTTON_PRESSES::EXECUTE_BUTTON_PRESSES'
-const EXECUTE_COMMAND = 'BUTTON_PRESSES::EXECUTE_COMMAND'
+const ADD_DEVICE = 'DEVICES::ADD_DEVICE'
+const ADD_POWER_STATE = 'DEVICES::ADD_POWER_STATE'
+const ADD_WEMO_CLIENT = 'DEVICES::ADD_WEMO_CLIENT'
+const TOGGLE_DEVICE = 'DEVICES::TOGGLE_DEVICE'
+const TOGGLE_DEVICES = 'DEVICES::TOGGLE_DEVICES'
+
+const addDevice = (
+	device,
+) => ({
+	device,
+	namespace: device.friendlyName,
+	type: ADD_DEVICE,
+})
+
+const addPowerState = ({
+	namespace,
+	powerState,
+}) => ({
+	namespace,
+	powerState,
+	type: ADD_POWER_STATE,
+})
 
 const addWemoClient = (
 	wemoClient,
@@ -10,44 +28,29 @@ const addWemoClient = (
 	type: ADD_WEMO_CLIENT,
 })
 
-const captureButtonPresses = ({
-	bluetoothAddress,
-	buttonPressStates,
-	hostname,
-}) => ({
-	buttonId: bluetoothAddress,
-	buttonPressStates,
-	hostname,
-	type: CAPTURE_BUTTON_PRESSES,
-})
-
-const executeButtonPresses = ({
-	buttonId,
-	connection,
-	pressCount,
-	pressType,
-}) => ({
-	buttonId,
-	connection,
-	pressCount,
-	pressType,
-	type: EXECUTE_BUTTON_PRESSES,
-})
-
-const executeCommand = (
-	actionSets,
+const toggleDevice = (
+	deviceNames,
 ) => ({
-	actionSets,
-	type: EXECUTE_COMMAND,
+	deviceNames,
+	type: TOGGLE_DEVICE,
+})
+
+const toggleDevices = (
+	deviceNames,
+) => ({
+	deviceNames,
+	type: TOGGLE_DEVICES,
 })
 
 module.exports = {
+	ADD_DEVICE,
+	ADD_POWER_STATE,
 	ADD_WEMO_CLIENT,
+	addDevice,
+	addPowerState,
 	addWemoClient,
-	CAPTURE_BUTTON_PRESSES,
-	captureButtonPresses,
-	EXECUTE_BUTTON_PRESSES,
-	EXECUTE_COMMAND,
-	executeButtonPresses,
-	executeCommand,
+	TOGGLE_DEVICE,
+	TOGGLE_DEVICES,
+	toggleDevice,
+	toggleDevices,
 }
