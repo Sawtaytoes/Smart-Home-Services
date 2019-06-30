@@ -11,5 +11,8 @@ const devicesEpic = (
 )
 
 module.exports = {
+	devices: {
+		actions: require('./actions'),
+	},
 	devicesEpic,
 }

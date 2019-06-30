@@ -1,9 +1,8 @@
 const WemoClient = require('wemo-client')
 const { interval } = require('rxjs')
 const { map, startWith, switchMap } = require('rxjs/operators')
-const { ofTaskName } = require('@ghadyani-framework/node')
+const { ofTaskName, tasks } = require('@redux-observable-backend/node')
 const { ofType } = require('redux-observable')
-const { START_TASK } = require('@ghadyani-framework/node/redux/tasks/actions')
 
 const { addWemoClient } = require('./actions')
 
@@ -12,7 +11,11 @@ const startWemoClientEpic = (
 ) => (
 	action$
 	.pipe(
-		ofType(START_TASK),
+		ofType(
+			tasks
+			.actions
+			.START_TASK
+		),
 		ofTaskName(
 			'listen',
 			'undefined',
