@@ -1,6 +1,6 @@
 {
   "name": "lifx-controller",
-  "version": "0.0.0",
+  "version": "3.0.0",
   "description": "LIFX controller software using WebSockets.",
   "license": "MITNFA",
   "scripts": {
