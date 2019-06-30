@@ -1,5 +1,6 @@
 const { bindNodeCallback, fromEvent, merge, Observable } = require('rxjs')
-const { catchError, filter, ignoreElements, map, mergeMap, switchMap, tap } = require('rxjs/operators')
+const { catchEpicError } = require('@redux-observable-backend/redux-utils')
+const { filter, ignoreElements, map, mergeMap, switchMap, tap } = require('rxjs/operators')
 const { ofType } = require('redux-observable')
 
 const {
@@ -26,6 +27,9 @@ const startWemoDeviceListenerEpic = (
 				) => {
 					observer
 					.next(deviceInfo)
+
+					observer
+					.error(error)
 				})
 			})
 			.pipe(
@@ -65,6 +69,7 @@ const startWemoDeviceListenerEpic = (
 			)
 		)),
 		tap(console.log),
+		catchEpicError(),
 		ignoreElements(),
 	)
 )
