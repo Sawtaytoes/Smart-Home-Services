@@ -1,20 +1,20 @@
-const selectDevice = ({
+const selectBinaryState = ({
 	namespace,
 }) => ({
 	devices,
 }) => (
 	devices
-	.devicesList
+	.binaryStateList
 	.get(namespace)
 )
 
-const selectPowerState = ({
+const selectDeviceClient = ({
 	namespace,
 }) => ({
 	devices,
 }) => (
 	devices
-	.powerStatesList
+	.deviceClientList
 	.get(namespace)
 )
 
@@ -26,7 +26,7 @@ const selectWemoClient = () => ({
 )
 
 module.exports = {
-	selectDevice,
-	selectPowerState,
+	selectBinaryState,
+	selectDeviceClient,
 	selectWemoClient,
 }

@@ -1,14 +1,15 @@
 const { catchEpicError, ofNamespace } = require('@redux-observable-backend/redux-utils')
-const { ignoreElements, mergeMap, switchMap, takeUntil } = require('rxjs/operators')
-const { fromEvent, throwError } = require('rxjs')
+const { map, mergeMap, takeUntil } = require('rxjs/operators')
+const { fromEvent } = require('rxjs')
 const { ofType } = require('redux-observable')
 
 const {
 	ADD_DEVICE_CLIENT,
+	addBinaryState,
 	REMOVE_DEVICE_CLIENT,
 } = require('./actions')
 
-const errorListenerEpic = (
+const binaryStateListenerEpic = (
 	action$,
 ) => (
 	action$
@@ -20,7 +21,7 @@ const errorListenerEpic = (
 		}) => (
 			fromEvent(
 				deviceClient,
-				'error',
+				'binaryState',
 			)
 			.pipe(
 				takeUntil(
@@ -33,17 +34,17 @@ const errorListenerEpic = (
 						ofNamespace(namespace),
 					)
 				),
-				switchMap(error => (
-					throwError(`
-						${deviceClient.device.friendlyName}
-						${error}
-					`)
-				)),
+				map(binaryState => ({
+					binaryState: (
+						Number(binaryState)
+					),
+					namespace,
+				})),
+				map(addBinaryState),
 			)
 		)),
 		catchEpicError(),
-		ignoreElements(),
 	)
 )
 
-module.exports = errorListenerEpic
+module.exports = binaryStateListenerEpic

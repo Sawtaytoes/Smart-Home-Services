@@ -2,7 +2,7 @@ const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { distinctUntilChanged, filter, map, mergeMap } = require('rxjs/operators')
 const { Observable } = require('rxjs')
 
-const { addDevice } = require('./actions')
+const { addDeviceClient } = require('./actions')
 const { selectWemoClient } = require('./selectors')
 
 const wemoDeviceListenerEpic = (
@@ -35,9 +35,15 @@ const wemoDeviceListenerEpic = (
 					)
 				})
 			})
+			.pipe(
+				filter(Boolean),
+				map(device => (
+					wemoClient
+					.client(device)
+				)),
+			)
 		)),
-		filter(Boolean),
-		map(addDevice),
+		map(addDeviceClient),
 		catchEpicError(),
 	)
 )

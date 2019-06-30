@@ -1,26 +1,26 @@
 const { createMappedNamespaceReducer, createReducer } = require('@redux-observable-backend/redux-utils')
 
 const {
-	ADD_DEVICE,
-	REMOVE_DEVICE,
+	ADD_BINARY_STATE,
+	REMOVE_BINARY_STATE,
 } = require('./actions')
 
 const initialState = null
 
 const reducerActions = {
-	[ADD_DEVICE]: (
+	[ADD_BINARY_STATE]: (
 		prevState,
-		{ device },
+		{ binaryState },
 	) => (
-		device
+		binaryState
 	),
 
-	[REMOVE_DEVICE]: () => (
+	[REMOVE_BINARY_STATE]: () => (
 		initialState
 	),
 }
 
-const devicesListReducer = (
+const binaryStateListReducer = (
 	createMappedNamespaceReducer(
 		createReducer(
 			reducerActions,
@@ -29,4 +29,4 @@ const devicesListReducer = (
 	)
 )
 
-module.exports = devicesListReducer
+module.exports = binaryStateListReducer

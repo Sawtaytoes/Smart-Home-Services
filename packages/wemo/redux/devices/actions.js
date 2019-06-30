@@ -1,24 +1,30 @@
-const ADD_DEVICE = 'DEVICES::ADD_DEVICE'
-const ADD_POWER_STATE = 'DEVICES::ADD_POWER_STATE'
+const ADD_BINARY_STATE = 'DEVICES::ADD_BINARY_STATE'
+const ADD_DEVICE_CLIENT = 'DEVICES::ADD_DEVICE_CLIENT'
 const ADD_WEMO_CLIENT = 'DEVICES::ADD_WEMO_CLIENT'
+const REMOVE_BINARY_STATE = 'DEVICES::REMOVE_BINARY_STATE'
+const REMOVE_DEVICE_CLIENT = 'DEVICES::REMOVE_DEVICE_CLIENT'
 const TOGGLE_DEVICE = 'DEVICES::TOGGLE_DEVICE'
 const TOGGLE_DEVICES = 'DEVICES::TOGGLE_DEVICES'
 
-const addDevice = (
-	device,
-) => ({
-	device,
-	namespace: device.friendlyName,
-	type: ADD_DEVICE,
+const addBinaryState = ({
+	binaryState,
+	namespace,
+}) => ({
+	binaryState,
+	namespace,
+	type: ADD_BINARY_STATE,
 })
 
-const addPowerState = ({
-	namespace,
-	powerState,
-}) => ({
-	namespace,
-	powerState,
-	type: ADD_POWER_STATE,
+const addDeviceClient = (
+	deviceClient,
+) => ({
+	deviceClient,
+	namespace: (
+		deviceClient
+		.device
+		.friendlyName
+	),
+	type: ADD_DEVICE_CLIENT,
 })
 
 const addWemoClient = (
@@ -26,6 +32,20 @@ const addWemoClient = (
 ) => ({
 	wemoClient,
 	type: ADD_WEMO_CLIENT,
+})
+
+const removeBinaryState = ({
+	namespace,
+}) => ({
+	namespace,
+	type: REMOVE_BINARY_STATE,
+})
+
+const removeDeviceClient = ({
+	namespace,
+}) => ({
+	namespace,
+	type: REMOVE_DEVICE_CLIENT,
 })
 
 const toggleDevice = (
@@ -43,12 +63,16 @@ const toggleDevices = (
 })
 
 module.exports = {
-	ADD_DEVICE,
-	ADD_POWER_STATE,
+	ADD_BINARY_STATE,
+	ADD_DEVICE_CLIENT,
 	ADD_WEMO_CLIENT,
-	addDevice,
-	addPowerState,
+	addBinaryState,
+	addDeviceClient,
 	addWemoClient,
+	REMOVE_BINARY_STATE,
+	REMOVE_DEVICE_CLIENT,
+	removeBinaryState,
+	removeDeviceClient,
 	TOGGLE_DEVICE,
 	TOGGLE_DEVICES,
 	toggleDevice,

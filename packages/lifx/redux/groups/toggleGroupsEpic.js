@@ -72,30 +72,26 @@ const toggleGroupsEpic = (
 							? (
 								console
 								.warn(
-									chalk
-									.redBright(
-										'[MISSING GROUP]'
+									(
+										chalk
+										.redBright('[MISSING GROUP]')
 									),
 									(
 										chalk
-										.bgRed(
-											groupName
-										)
+										.bgRed(groupName)
 									)
 								)
 							)
 							: (
 								console
 								.info(
-									chalk
-									.greenBright(
-										'[TOGGLE GROUP]'
+									(
+										chalk
+										.greenBright('[TOGGLE GROUP]')
 									),
 									(
 										chalk
-										.bgGreen(
-											groupName
-										)
+										.bgGreen(groupName)
 									)
 								)
 							)
