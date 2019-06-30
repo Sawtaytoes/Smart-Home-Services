@@ -1,6 +1,6 @@
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { from } = require('rxjs')
-const { ignoreElements, groupBy, map, mergeAll, mergeMap, pluck, tap, toArray } = require('rxjs/operators')
+const { groupBy, map, mergeAll, mergeMap, pluck, toArray } = require('rxjs/operators')
 const { ofType } = require('redux-observable')
 
 const {
