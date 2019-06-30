@@ -8,5 +8,6 @@ export NODE_ENV=production
 git reset --hard HEAD
 git pull
 yarn
-chown -R www-data:www-data .
-pm2 reload ${PWD##*/}
+pm2 reload flic
+pm2 reload lifx
+pm2 reload wemo
