@@ -5,8 +5,8 @@ const { ofType } = require('redux-observable')
 
 const {
 	ADD_DEVICE_CLIENT,
-	addBinaryState,
 	REMOVE_DEVICE_CLIENT,
+	updateBinaryState,
 } = require('./actions')
 
 const binaryStateListenerEpic = (
@@ -40,7 +40,7 @@ const binaryStateListenerEpic = (
 					),
 					namespace,
 				})),
-				map(addBinaryState),
+				map(updateBinaryState),
 			)
 		)),
 		catchEpicError(),

@@ -1,4 +1,3 @@
-const ADD_BINARY_STATE = 'DEVICES::ADD_BINARY_STATE'
 const ADD_DEVICE_CLIENT = 'DEVICES::ADD_DEVICE_CLIENT'
 const ADD_WEMO_CLIENT = 'DEVICES::ADD_WEMO_CLIENT'
 const REMOVE_BINARY_STATE = 'DEVICES::REMOVE_BINARY_STATE'
@@ -8,15 +7,7 @@ const TOGGLE_DEVICE = 'DEVICES::TOGGLE_DEVICE'
 const TOGGLE_DEVICES = 'DEVICES::TOGGLE_DEVICES'
 const TURN_OFF_DEVICES = 'DEVICES::TURN_OFF_DEVICES'
 const TURN_ON_DEVICES = 'DEVICES::TURN_ON_DEVICES'
-
-const addBinaryState = ({
-	binaryState,
-	namespace,
-}) => ({
-	binaryState,
-	namespace,
-	type: ADD_BINARY_STATE,
-})
+const UPDATE_BINARY_STATE = 'DEVICES::UPDATE_BINARY_STATE'
 
 const addDeviceClient = (
 	deviceClient,
@@ -88,11 +79,18 @@ const turnOnDevices = (
 	type: TURN_ON_DEVICES,
 })
 
+const updateBinaryState = ({
+	binaryState,
+	namespace,
+}) => ({
+	binaryState,
+	namespace,
+	type: UPDATE_BINARY_STATE,
+})
+
 module.exports = {
-	ADD_BINARY_STATE,
 	ADD_DEVICE_CLIENT,
 	ADD_WEMO_CLIENT,
-	addBinaryState,
 	addDeviceClient,
 	addWemoClient,
 	REMOVE_BINARY_STATE,
@@ -109,4 +107,6 @@ module.exports = {
 	TURN_ON_DEVICES,
 	turnOffDevices,
 	turnOnDevices,
+	UPDATE_BINARY_STATE,
+	updateBinaryState,
 }

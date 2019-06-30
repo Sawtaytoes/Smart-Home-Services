@@ -1,14 +1,14 @@
 const { createMappedNamespaceReducer, createReducer } = require('@redux-observable-backend/redux-utils')
 
 const {
-	ADD_BINARY_STATE,
+	UPDATE_BINARY_STATE,
 	REMOVE_BINARY_STATE,
 } = require('./actions')
 
 const initialState = null
 
 const reducerActions = {
-	[ADD_BINARY_STATE]: (
+	[UPDATE_BINARY_STATE]: (
 		prevState,
 		{ binaryState },
 	) => (
