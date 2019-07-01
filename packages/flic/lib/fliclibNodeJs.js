@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 /**
  * Flic lib for Node.js.
  *
@@ -993,5 +991,3 @@ module.exports = {
 	FlicScanner: FlicScanner,
 	FlicScanWizard: FlicScanWizard
 };
-
-/* eslint-enable */
