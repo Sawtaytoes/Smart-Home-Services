@@ -1,9 +1,12 @@
 const { bindNodeCallback } = require('rxjs')
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
-const { ignoreElements, mergeMap } = require('rxjs/operators')
+const { map, mapTo, mergeMap } = require('rxjs/operators')
 const { ofType } = require('redux-observable')
 
-const { SET_BINARY_STATE } = require('./actions')
+const {
+	SET_BINARY_STATE,
+	updateBinaryState,
+} = require('./actions')
 
 const setBinaryStateEpic = (
 	action$,
@@ -22,9 +25,19 @@ const setBinaryStateEpic = (
 			)(
 				binaryState,
 			)
+			.pipe(
+				mapTo({
+					binaryState,
+					namespace: (
+						deviceClient
+						.device
+						.friendlyName
+					),
+				}),
+				map(updateBinaryState),
+			)
 		)),
 		catchEpicError(),
-		ignoreElements(),
 	)
 )
 
