@@ -1,7 +1,7 @@
 const { bindCallback, fromEvent, of } = require('rxjs')
-const { catchEpicError } = require('@redux-observable-backend/redux-utils')
-const { FlicConnectionChannel } = require('$lib/fliclibNodeJs')
 const { buffer, debounceTime, map, mergeMap, switchMap, tap } = require('rxjs/operators')
+const { catchEpicError } = require('@redux-observable-backend/redux-utils')
+const { FlicConnectionChannel } = require('fliclib/clientlib/nodejs/fliclibNodeJs')
 const { ofType } = require('redux-observable')
 
 const {
