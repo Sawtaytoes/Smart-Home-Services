@@ -16,7 +16,6 @@
     "yarn": ">=1.6.0"
   },
   "_moduleAliases": {
-    "$lib": "./lib",
     "$redux": "./redux",
     "$utils": "./utils"
   },
@@ -42,6 +41,7 @@
     "@redux-observable-backend/websocket": "^4.3.1",
     "better-module-alias": "^1.0.0",
     "chalk": "^2.4.2",
+    "fliclib": "git+https://github.com/50ButtonsEach/fliclib-linux-hci.git#master",
     "node-fetch": "^2.6.0"
   }
 }

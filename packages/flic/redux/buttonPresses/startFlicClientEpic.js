@@ -1,6 +1,6 @@
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { configurations, ofTaskName, tasks } = require('@redux-observable-backend/node')
-const { FlicClient } = require('$lib/fliclibNodeJs')
+const { FlicClient } = require('fliclib/clientlib/nodejs/fliclibNodeJs')
 const { map, switchMap } = require('rxjs/operators')
 const { ofType } = require('redux-observable')
 
