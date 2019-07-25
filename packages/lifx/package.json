@@ -42,7 +42,7 @@
     "@redux-observable-backend/websocket": "^4.3.1",
     "better-module-alias": "^1.0.0",
     "chalk": "^2.4.2",
-    "lifx-lan-client": "^1.0.1",
+    "lifx-lan-client": "^1.0.2",
     "node-fetch": "^2.6.0"
   }
 }

@@ -3325,14 +3325,13 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
-lifx-lan-client@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/lifx-lan-client/-/lifx-lan-client-1.0.1.tgz#e5122ad0e91ad5279def3bc954f05aae61904b75"
-  integrity sha512-RUtCfVO7orzA5tgtFUvPW05LH5oWlZ36x241qBtFtsoBXErav+adWlb8Oq5ggtx7IT8XBCWGB9f4WWBS/D+VhA==
+lifx-lan-client@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/lifx-lan-client/-/lifx-lan-client-1.0.2.tgz#c925ebf193b89d63e6d5c077d376727ea221ea9d"
+  integrity sha512-3B5YAxM6bImmOp7ejpCi8zqsGN7H08eUHFeiln5attZwUwNujK4kdeMLtU+Uvfwv6crrKRHM0K9GOrkmkhcmSw==
   dependencies:
     eventemitter3 "^2.0.3"
     lodash "^4.17.11"
-    postinstall-build "^5.0.1"
 
 load-json-file@^1.0.0:
   version "1.1.0"
@@ -4356,11 +4355,6 @@ posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
   integrity sha1-AerA/jta9xoqbAL+q7jB/vfgDqs=
-
-postinstall-build@^5.0.1:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/postinstall-build/-/postinstall-build-5.0.3.tgz#238692f712a481d8f5bc8960e94786036241efc7"
-  integrity sha512-vPvPe8TKgp4FLgY3+DfxCE5PIfoXBK2lyLfNCxsRbDsV6vS4oU5RG/IWxrblMn6heagbnMED3MemUQllQ2bQUg==
 
 prelude-ls@~1.1.2:
   version "1.1.2"
