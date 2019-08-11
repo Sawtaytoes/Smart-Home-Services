@@ -244,6 +244,22 @@ const ACTION_SET = {
 		}],
 	},
 
+	ALL_MASTER_BATHROOM: {
+		[PRESS.TRIPLE_HOLD]: [{
+			action: ACTION.TURN_OFF_GROUP,
+			device: DEVICE.LIFX,
+			name: NAME.MASTER_BATHROOM,
+		}, {
+			action: ACTION.TURN_OFF_GROUP,
+			device: DEVICE.LIFX,
+			name: NAME.MASTER_CLOSET,
+		}, {
+			action: ACTION.TURN_OFF_GROUP,
+			device: DEVICE.LIFX,
+			name: NAME.MASTER_TOILET,
+		}],
+	},
+
 	ALL_MASTER_BEDROOM: {
 		[PRESS.TRIPLE]: {
 			action: ACTION.TOGGLE_SCENE,
@@ -262,6 +278,10 @@ const ACTION_SET = {
 			action: ACTION.TURN_OFF_GROUP,
 			device: DEVICE.LIFX,
 			name: NAME.MASTER_CLOSET,
+		}, {
+			action: ACTION.TURN_OFF_GROUP,
+			device: DEVICE.LIFX,
+			name: NAME.MASTER_TOILET,
 		}],
 	},
 
@@ -525,6 +545,7 @@ const MULTI_ACTION_SET = {
 
 	MASTER_BATHROOM: (
 		combineSets([
+			ACTION_SET.ALL_MASTER_BATHROOM,
 			ACTION_SET.MASTER_BATHROOM,
 			ACTION_SET.MASTER_BATHROOM_VANITY,
 		])
