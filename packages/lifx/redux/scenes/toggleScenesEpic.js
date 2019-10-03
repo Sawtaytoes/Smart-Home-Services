@@ -2,6 +2,7 @@ const { merge, of } = require('rxjs')
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { map, mergeAll, mergeMap, pluck, toArray } = require('rxjs/operators')
 
+const ignoreIfLockedLightIds = require('./utils/ignoreIfLockedLightIds')
 const mapToSceneStates = require('./utils/mapToSceneStates')
 const toggleScenes = require('./utils/toggleScenes')
 const { lockLights } = require('$redux/lights/actions')
@@ -27,6 +28,9 @@ const toggleScenesEpic = (
 				mergeAll(),
 				pluck('lightId'),
 				toArray(),
+				ignoreIfLockedLightIds({
+					state$,
+				}),
 				map((
 					lightIds,
 				) => ({
