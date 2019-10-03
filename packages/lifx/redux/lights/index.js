@@ -5,6 +5,7 @@ const httpApiCacheEpic = require('./httpApiCacheEpic')
 const httpApiDiscoveryEpic = require('./httpApiDiscoveryEpic')
 const httpApiLightsListReducer = require('./httpApiLightsListReducer')
 const lightsLoggingEpic = require('./lightsLoggingEpic')
+const lockedLightIdsListReducer = require('./lockedLightIdsListReducer')
 const networkDiscoveryEpic = require('./networkDiscoveryEpic')
 const networkLightsListReducer = require('./networkLightsListReducer')
 
@@ -20,6 +21,7 @@ const lightsEpic = (
 const lightsReducer = (
 	combineReducers({
 		httpApiLightsList: httpApiLightsListReducer,
+		lockedLightIdsList: lockedLightIdsListReducer,
 		networkLightsList: networkLightsListReducer,
 	})
 )
