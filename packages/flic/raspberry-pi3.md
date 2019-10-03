@@ -16,6 +16,11 @@ sudo ~/projects/fliclib-linux-hci/bin/armv6l/flicd -f flic-db.sqlite3 -w -d
 sudo raspi-config
 ```
 
+## Raise Volume of Raspberry Pi
+```shell
+alsamixer
+```
+
 # Add Bluetooth to Raspberry Pi 3
 ```shell
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
