@@ -238,16 +238,9 @@ const toggleScenes = ({
 			)
 		)),
 		toArray(),
-		map((
-			lights,
-		) => ({
-			numberOfLightsInScene: (
-				sceneStates.length
-			),
-			numberOfToggledLightsInScene: (
-				lights.length
-			),
-		})),
+		catchEpicError(
+			of(null)
+		),
 		tap(({
 			numberOfLightsInScene,
 			numberOfToggledLightsInScene,
