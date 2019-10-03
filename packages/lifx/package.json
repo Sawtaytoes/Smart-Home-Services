@@ -18,6 +18,7 @@
   "_moduleAliases": {
     "$cache": "./.cache",
     "$redux": "./redux",
+    "$sounds": "./sounds",
     "$utils": "./utils"
   },
   "ava": {
@@ -43,6 +44,7 @@
     "better-module-alias": "^1.0.1",
     "chalk": "^2.4.2",
     "lifx-lan-client": "^1.0.2",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "play-sound": "^1.1.3"
   }
 }
