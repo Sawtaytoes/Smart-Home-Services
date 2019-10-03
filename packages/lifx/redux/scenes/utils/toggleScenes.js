@@ -244,11 +244,8 @@ const toggleScenes = ({
 
 			audioPlayer
 			.play(
-				require.resolve('$sounds/Bleep-SoundBible.com-1927126940.mp3'),
-				() => {
-					audioPlayer
-					.play(require.resolve('$sounds/Beep-SoundBible.com-923660219.mp3'))
-				}
+				require
+				.resolve('$sounds/Bleep-SoundBible.com-1927126940.mp3')
 			)
 		}),
 		catchEpicError(
@@ -258,7 +255,10 @@ const toggleScenes = ({
 					const audioPlayer = createAudioPlayer()
 
 					audioPlayer
-					.play(require.resolve('$sounds/Buzz-SoundBible.com-1790490578.mp3'))
+					.play(
+						require
+						.resolve('$sounds/Buzz-SoundBible.com-1790490578.mp3')
+					)
 				})
 			)
 		),
