@@ -5,6 +5,13 @@ const selectHttpApiLights = () => ({
 	.httpApiLightsList
 )
 
+const selectLockedLightIds = () => ({
+	lights,
+}) => (
+	lights
+	.lockedLightIdsList
+)
+
 const selectNetworkLight = ({
 	lightId,
 }) => ({
@@ -26,6 +33,7 @@ const selectNetworkLights = () => ({
 
 module.exports = {
 	selectHttpApiLights,
+	selectLockedLightIds,
 	selectNetworkLight,
 	selectNetworkLights,
 }
