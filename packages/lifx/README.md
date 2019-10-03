@@ -68,9 +68,32 @@ webSocket.onopen = () => {
   .send(
     JSON
     .stringify({
-      sceneName: 'Late Night Computing',
+      sceneName: 'My Scene Name',
       type: 'REQUEST::TOGGLE_SCENE',
     })
   )
 }
+```
+
+You can have the WebSocket client reconnect when the app is reloaded by pasting this code instead:
+```js
+restartWebSocket = () => {
+  webSocket = new WebSocket('ws://localhost:3000', 'v1')
+  webSocket.onmessage = console.log
+  webSocket.onerror = console.error
+  webSocket.onclose = () => setTimeout(restartWebSocket, 5000)
+  webSocket.onopen = () => {
+    console.log('READY')
+
+    webSocket
+    .send(
+      JSON
+      .stringify({
+	      sceneName: 'My Scene Name',
+	      type: 'REQUEST::TOGGLE_SCENE',
+      })
+    )
+  }
+}
+restartWebSocket()
 ```
