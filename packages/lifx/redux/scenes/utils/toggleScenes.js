@@ -142,6 +142,19 @@ const toggleScenes = ({
 			.pipe(
 				pluck('isLightMatchingSceneState'),
 				every(Boolean),
+				tap((
+					isSceneActive,
+				) => {
+					console
+					.info(
+						chalk
+						.bgGreen(
+							isSceneActive
+							? '[TURNING OFF SCENE]'
+							: '[TURNING ON SCENE]'
+						)
+					)
+				}),
 				switchMap((
 					isSceneActive,
 				) => (
