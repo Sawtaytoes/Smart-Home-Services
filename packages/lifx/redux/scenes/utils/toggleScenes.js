@@ -1,4 +1,5 @@
 const chalk = require('chalk')
+const createAudioPlayer = require('play-sound')
 const { bindNodeCallback, from, merge, of } = require('rxjs')
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { every, filter, map, mapTo, mergeAll, mergeMap, pluck, switchMap, tap, toArray } = require('rxjs/operators')
@@ -238,39 +239,32 @@ const toggleScenes = ({
 			)
 		)),
 		toArray(),
+		tap(() => {
+			const audioPlayer = createAudioPlayer()
+
+			audioPlayer
+			.play(
+				require.resolve('$sounds/Bleep-SoundBible.com-1927126940.mp3'),
+				() => {
+					audioPlayer
+					.play(require.resolve('$sounds/Beep-SoundBible.com-923660219.mp3'))
+				}
+			)
+		}),
+		catchEpicError(
+			of(null)
+			.pipe(
+				tap(() => {
+					const audioPlayer = createAudioPlayer()
+
+					audioPlayer
+					.play(require.resolve('$sounds/Buzz-SoundBible.com-1790490578.mp3'))
+				})
+			)
+		),
 		catchEpicError(
 			of(null)
 		),
-		tap(({
-			numberOfLightsInScene,
-			numberOfToggledLightsInScene,
-		}) => (
-			numberOfLightsInScene
-			!== numberOfToggledLightsInScene
-			&& (
-				console
-				.error(
-					chalk
-					.redBright(
-						'[NOT ALL LIGHTS TOGGLED]'
-					),
-					(
-						chalk
-						.bgRed(
-							JSON
-							.stringify(
-								{
-									actual: numberOfToggledLightsInScene,
-									expected: numberOfLightsInScene,
-								},
-								null,
-								2,
-							)
-						)
-					)
-				)
-			)
-		)),
 		mapTo(lightIds),
 		map(unlockLights),
 	)
