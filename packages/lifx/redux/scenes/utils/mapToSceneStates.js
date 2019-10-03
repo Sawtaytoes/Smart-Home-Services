@@ -88,6 +88,7 @@ const mapToSceneStates = (
 					),
 				)
 			)),
+			filter(Boolean),
 			pluck('states'),
 			filter(Boolean),
 			toArray(),
