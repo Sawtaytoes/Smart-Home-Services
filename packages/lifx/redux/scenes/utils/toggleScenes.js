@@ -262,9 +262,6 @@ const toggleScenes = ({
 				})
 			)
 		),
-		catchEpicError(
-			of(null)
-		),
 		mapTo(lightIds),
 		map(unlockLights),
 	)
