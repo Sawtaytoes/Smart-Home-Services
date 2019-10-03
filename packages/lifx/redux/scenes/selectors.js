@@ -1,3 +1,10 @@
+const selectHttpApiScenes = () => ({
+	scenes,
+}) => (
+	scenes
+	.httpApiScenesList
+)
+
 const selectScene = ({
 	sceneName,
 }) => ({
@@ -9,5 +16,6 @@ const selectScene = ({
 )
 
 module.exports = {
+	selectHttpApiScenes,
 	selectScene,
 }
