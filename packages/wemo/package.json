@@ -1,6 +1,6 @@
 {
   "name": "wemo-controller",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "WeMo controller software using WebSockets and Redux-Observable.",
   "license": "MITNFA",
   "scripts": {
