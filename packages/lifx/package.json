@@ -46,5 +46,9 @@
     "lifx-lan-client": "^1.0.2",
     "node-fetch": "^2.6.0",
     "play-sound": "^1.1.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sawtaytoes/Smart-Home-Services.git"
   }
 }
