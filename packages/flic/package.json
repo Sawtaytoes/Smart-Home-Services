@@ -1,6 +1,6 @@
 {
   "name": "@smart-home-services/flic-controller",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Flic controller software using WebSockets.",
   "license": "MITNFA",
   "scripts": {
