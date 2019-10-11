@@ -1,5 +1,5 @@
 {
-  "name": "flic-controller",
+  "name": "@smart-home-services/flic-controller",
   "version": "3.0.2",
   "description": "Flic controller software using WebSockets.",
   "license": "MITNFA",
@@ -43,6 +43,9 @@
     "chalk": "^2.4.2",
     "fliclib": "git+https://github.com/50ButtonsEach/fliclib-linux-hci.git#master",
     "node-fetch": "^2.6.0"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "repository": {
     "type": "git",
