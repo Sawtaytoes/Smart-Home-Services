@@ -31,3 +31,11 @@ module.exports = {
   port: 36002,
 }
 ```
+
+## API Overview
+*Under Construction*
+
+- [`devices`](#devices)
+
+## API Docs
+*Under Construction*
