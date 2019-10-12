@@ -17,6 +17,5 @@ Allows toggling WeMo devices using the SSDP LAN API. This allows the use of Flic
 yarn start
 ```
 
-
 ## Requirements
 - Node.js
