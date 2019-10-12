@@ -100,3 +100,15 @@ restartWebSocket = () => {
 }
 restartWebSocket()
 ```
+
+## API Overview
+*Under Construction*
+
+- [`actionsBlacklist`](#actionsblacklist)
+- [`groups`](#groups)
+- [`lifxNetwork`](#lifxnetwork)
+- [`lights`](#lights)
+- [`scenes`](#scenes)
+
+## API Docs
+*Under Construction*

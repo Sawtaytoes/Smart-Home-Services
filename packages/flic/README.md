@@ -102,3 +102,12 @@ restartWebSocket = () => {
 }
 restartWebSocket()
 ```
+
+## API Overview
+*Under Construction*
+
+- [`buttonPresses`](#buttonpresses)
+- [`connections`](#connections)
+
+## API Docs
+*Under Construction*
