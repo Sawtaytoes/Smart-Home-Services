@@ -1,6 +1,6 @@
 {
   "name": "@smart-home-services/wemo-controller",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "WeMo controller software using WebSockets and Redux-Observable.",
   "license": "MITNFA",
   "scripts": {
