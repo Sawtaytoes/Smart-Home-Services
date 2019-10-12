@@ -1,16 +1,18 @@
 # LIFX Controller
+[What is this library?](https://github.com/Sawtaytoes/Smart-Home-Services/blob/master/README.md)
+
 WebSockets-based LIFX Controller software.
 
 For an example use case, look at [`./app.js`](app.js).
 
 ## Installation
 
-### `npm`
+### npm
 ```sh
 npm i
 ```
 
-### `yarn`
+### yarn
 ```sh
 yarn
 ```
@@ -20,12 +22,13 @@ yarn
 ### WebSocket Server
 To configure the Webpack listener, you have 3 options available to modify in your `./localConfig.js`:
 
+```js
 module.exports = {
   // ... other config options ...
-  hostname,
-  port,
-  protocol,
+  hostname: 'raspberry-pi.local',
+  port: 36001,
 }
+```
 
 ### LIFX HTTP API Token
 Go to [LIFX's cloud settings page](https://cloud.lifx.com/settings) and create a new token for your app. This will go in your `./localConfig.js` as:

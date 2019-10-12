@@ -1,16 +1,18 @@
 # Flic Controller
+[What is this library?](https://github.com/Sawtaytoes/Smart-Home-Services/blob/master/README.md)
+
 WebSockets-based Flic Controller software. This is the server portion which executes commands. There is a related piece which listens for button presses and sends them to this controller.
 
 For an example use case, look at [`./app.js`](app.js).
 
 ## Installation
 
-### `npm`
+### npm
 ```sh
 npm i
 ```
 
-### `yarn`
+### yarn
 ```sh
 yarn
 ```
@@ -74,4 +76,29 @@ webSocket.onopen = () => {
     })
   )
 }
+```
+
+You can have the WebSocket client reconnect when the app is reloaded by pasting this code instead:
+```js
+restartWebSocket = () => {
+  webSocket = new WebSocket('ws://localhost:3000', 'v1')
+  webSocket.onmessage = console.log
+  webSocket.onerror = console.error
+  webSocket.onclose = () => setTimeout(restartWebSocket, 5000)
+  webSocket.onopen = () => {
+    console.log('READY')
+
+    webSocket
+    .send(
+      JSON
+      .stringify({
+        buttonId: '80:e4:da:86:44:9e',
+        pressCount: 1,
+        pressType: 'hold',
+        type: 'REQUEST::EXECUTE_BUTTON_PRESSES',
+      })
+    )
+  }
+}
+restartWebSocket()
 ```
