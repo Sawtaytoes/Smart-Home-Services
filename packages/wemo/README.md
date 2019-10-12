@@ -11,12 +11,12 @@ For an example use case, look at [`./app.js`](app.js).
 
 ### npm
 ```sh
-npm i
+npm i @smart-home-services/wemo-controller
 ```
 
 ### yarn
 ```sh
-yarn
+yarn @smart-home-services/wemo-controller
 ```
 
 ## Custom Configuration
