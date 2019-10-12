@@ -1,7 +1,9 @@
 # Smart Home Services
 Flic, LIFX, and WeMo microservices for controlling smart home devices.
 
-Using these packages, you can hook your Flic buttons up to a Raspberry Pi and control LIFX and WeMo devices. If you want to have other device support, that would need to be added separately.
+Using these packages, you can hook up Flic buttons to a Raspberry Pi and control LIFX and WeMo devices.
+
+You don't have to use Flic buttons to control these devices either. All of these microservices can be run independently, but the Flic software currently only targets those two controllers. If you want to have other device support, that would need to be added separately.
 
 There's minimal effort required on your part to consume these packages, create a Flic button config file, and get started yourself.
 
