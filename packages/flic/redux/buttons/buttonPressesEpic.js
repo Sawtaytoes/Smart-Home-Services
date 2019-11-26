@@ -1,5 +1,5 @@
 const { bindCallback, fromEvent, of } = require('rxjs')
-const { buffer, debounceTime, map, mergeMap, switchMap, tap } = require('rxjs/operators')
+const { buffer, debounceTime, map, mergeMap, switchMap, takeUntil, tap } = require('rxjs/operators')
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { FlicConnectionChannel } = require('fliclib/clientlib/nodejs/fliclibNodeJs')
 const { ofType } = require('redux-observable')
@@ -9,7 +9,7 @@ const {
 	captureButtonPresses,
 } = require('./actions')
 
-const startButtonListenerEpic = (
+const buttonPressesEpic = (
 	action$,
 ) => (
 	action$
@@ -24,6 +24,12 @@ const startButtonListenerEpic = (
 				'ready',
 			)
 			.pipe(
+				takeUntil(
+					fromEvent(
+						flicClient,
+						'close',
+					)
+				),
 				switchMap(() => (
 					bindCallback(
 						flicClient
@@ -82,4 +88,4 @@ const startButtonListenerEpic = (
 	)
 )
 
-module.exports = startButtonListenerEpic
+module.exports = buttonPressesEpic

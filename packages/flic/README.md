@@ -106,7 +106,7 @@ restartWebSocket()
 ## API Overview
 *Under Construction*
 
-- [`buttonPresses`](#buttonpresses)
+- [`buttons`](#buttons)
 - [`connections`](#connections)
 
 ## API Docs
