@@ -41,7 +41,7 @@
     "@redux-observable-backend/websocket": "^4.3.2",
     "better-module-alias": "^1.0.1",
     "chalk": "^2.4.2",
-    "fliclib": "git+https://github.com/50ButtonsEach/fliclib-linux-hci.git#master",
+    "fliclib": "git+https://github.com/50ButtonsEach/fliclib-linux-hci.git#a21978807fe2fae7016cb9cdd6ffce29eaaee910",
     "node-fetch": "^2.6.0"
   },
   "publishConfig": {

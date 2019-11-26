@@ -2432,7 +2432,7 @@ flatted@^2.0.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-2.0.1.tgz#69e57caa8f0eacbc281d2e2cb458d46fdb449e08"
   integrity sha512-a1hQMktqW9Nmqr5aktAux3JMNqaucxGcjtjWnZLHX7yyPCmlSV3M54nGYbqT8K+0GhF3NBgmJCc3ma+WOgX8Jg==
 
-"fliclib@git+https://github.com/50ButtonsEach/fliclib-linux-hci.git#master":
+"fliclib@git+https://github.com/50ButtonsEach/fliclib-linux-hci.git#a21978807fe2fae7016cb9cdd6ffce29eaaee910":
   version "0.0.0"
   resolved "git+https://github.com/50ButtonsEach/fliclib-linux-hci.git#a21978807fe2fae7016cb9cdd6ffce29eaaee910"
 
