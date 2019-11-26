@@ -2,6 +2,6 @@
 require('better-module-alias')(__dirname)
 
 module.exports = {
-	buttonPresses: require('$redux/buttonPresses').buttonPresses,
+	buttons: require('$redux/buttons').buttons,
 	connections: require('$redux/connections').connections,
 }
