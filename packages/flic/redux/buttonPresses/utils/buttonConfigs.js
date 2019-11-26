@@ -32,7 +32,7 @@ const buttonConfigs = {
 	'80:e4:da:72:60:e2': {
 		...MULTI_ACTION_SET.ALL_LIVING_ROOM,
 		color: COLOR.BLACK,
-		location: "Living Room Coffee Table",
+		location: "Living Room Doorway",
 	},
 
 	'80:e4:da:72:3d:6b': {
@@ -150,9 +150,9 @@ const buttonConfigs = {
 	},
 
 	'80:e4:da:72:98:19': {
-		...ACTION_SET.LIVING_ROOM,
+		...ACTION_SET.KITCHEN,
 		color: COLOR.WHITE,
-		location: "Living Room Coffee Table",
+		location: "Living Room Doorway",
 	},
 
 	'80:e4:da:72:ab:3d': {
