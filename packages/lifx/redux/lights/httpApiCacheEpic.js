@@ -40,15 +40,8 @@ const storeInCacheEpic = (
 				fs
 				.writeFile
 			)(
-				(
-					require
-					.resolve(
-						'$cache/lights.json'
-					)
-				),
-				(
-					lightsJson
-				),
+				'.cache/lights.json',
+				lightsJson,
 			)
 		)),
 		catchEpicError(),
