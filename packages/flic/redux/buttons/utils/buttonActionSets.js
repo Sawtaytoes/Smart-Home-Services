@@ -244,6 +244,22 @@ const ACTION_SET = {
 		}],
 	},
 
+	ALL_KITCHEN: {
+		[PRESS.TRIPLE_HOLD]: [{
+			action: ACTION.TURN_OFF_GROUP,
+			device: DEVICE.LIFX,
+			name: NAME.KITCHEN,
+		}, {
+			action: ACTION.TURN_OFF_GROUP,
+			device: DEVICE.LIFX,
+			name: NAME.EAT_IN_KITCHEN,
+		}, {
+			action: ACTION.TURN_OFF_GROUP,
+			device: DEVICE.LIFX,
+			name: NAME.FAMILY_ROOM,
+		}],
+	},
+
 	ALL_MASTER_BATHROOM: {
 		[PRESS.TRIPLE_HOLD]: [{
 			action: ACTION.TURN_OFF_GROUP,
@@ -540,6 +556,13 @@ const MULTI_ACTION_SET = {
 		combineSets([
 			ACTION_SET.ALL_GUEST_BEDROOM,
 			ACTION_SET.GUEST_BEDROOM,
+		])
+	),
+
+	KITCHEN: (
+		combineSets([
+			ACTION_SET.ALL_KITCHEN,
+			ACTION_SET.KITCHEN,
 		])
 	),
 

@@ -14,7 +14,7 @@ const buttonConfigs = {
 	'80:e4:da:72:4c:20': {
 		...MULTI_ACTION_SET.ALL_KITCHEN,
 		color: COLOR.BLACK,
-		location: "Kitchen Desk",
+		location: "Kitchen Garage Doorway",
 	},
 
 	'80:e4:da:72:a8:62': {
@@ -32,7 +32,7 @@ const buttonConfigs = {
 	'80:e4:da:72:60:e2': {
 		...MULTI_ACTION_SET.ALL_LIVING_ROOM,
 		color: COLOR.BLACK,
-		location: "Living Room Doorway",
+		location: "Living Room Kitchen Entrance",
 	},
 
 	'80:e4:da:72:3d:6b': {
@@ -98,13 +98,13 @@ const buttonConfigs = {
 	'80:e4:da:72:a8:bf': {
 		...ACTION_SET.EAT_IN_KITCHEN,
 		color: COLOR.WHITE,
-		location: "Eat-In Kitchen Table",
+		location: "Eat-In Kitchen and Family Room Corner",
 	},
 
 	'80:e4:da:72:4c:01': {
 		...ACTION_SET.FAMILY_ROOM,
 		color: COLOR.BLACK,
-		location: "Eat-In Kitchen Table",
+		location: "Eat-In Kitchen and Family Room Corner",
 	},
 
 	'80:e4:da:72:63:3c': {
@@ -132,15 +132,14 @@ const buttonConfigs = {
 	},
 
 	'80:e4:da:72:a8:a1': {
-		...ACTION_SET.KITCHEN,
 		color: COLOR.WHITE,
-		location: "Kitchen Island",
+		location: "Unused Buttons",
 	},
 
 	'80:e4:da:72:9d:27': {
-		...ACTION_SET.KITCHEN,
+		...MULTI_ACTION_SET.KITCHEN,
 		color: COLOR.WHITE,
-		location: "Kitchen Desk",
+		location: "Kitchen Garage Doorway",
 	},
 
 	'80:e4:da:72:a8:c1': {
@@ -150,9 +149,9 @@ const buttonConfigs = {
 	},
 
 	'80:e4:da:72:98:19': {
-		...ACTION_SET.KITCHEN,
+		...MULTI_ACTION_SET.KITCHEN,
 		color: COLOR.WHITE,
-		location: "Living Room Doorway",
+		location: "Living Room Kitchen Entrance",
 	},
 
 	'80:e4:da:72:ab:3d': {
@@ -203,12 +202,6 @@ const buttonConfigs = {
 		location: "Spare Bedroom Wall",
 	},
 
-	'80:e4:da:72:63:f5': {
-		...ACTION_SET.THEATER,
-		color: COLOR.GREEN,
-		location: "Family Room Couch Table",
-	},
-
 	'80:e4:da:73:5d:fd': {
 		...MULTI_ACTION_SET.ALL_STAIRWAY,
 		color: COLOR.BLACK,
@@ -227,10 +220,16 @@ const buttonConfigs = {
 		location: "Guest Bedroom Vanity",
 	},
 
+	'80:e4:da:73:60:04': {
+		...ACTION_SET.THEATER,
+		color: COLOR.GREEN,
+		location: "Kitchen Desk Side",
+	},
+
 	'80:e4:da:73:64:ab': {
 		...ACTION_SET.LIVING_ROOM,
 		color: COLOR.WHITE,
-		location: "Living Room Entrance",
+		location: "Living Room Kitchen Entrance",
 	},
 
 	'80:e4:da:73:66:dd': {
