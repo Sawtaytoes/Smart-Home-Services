@@ -233,6 +233,11 @@ const buttonConfigs = {
 	},
 
 	'80:e4:da:73:66:dd': {
+		color: COLOR.WHITE,
+		location: "UNUSED",
+	},
+
+	'80:e4:da:76:e1:c6': {
 		...ACTION_SET.KITCHEN_BATHROOM,
 		color: COLOR.WHITE,
 		location: "Kitchen Bathroom",
