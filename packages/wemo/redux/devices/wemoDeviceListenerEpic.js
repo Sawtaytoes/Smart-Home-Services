@@ -1,5 +1,5 @@
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
-const { distinctUntilChanged, filter, map, mergeMap } = require('rxjs/operators')
+const { distinctUntilChanged, filter, map, mergeMap, tap } = require('rxjs/operators')
 const { Observable } = require('rxjs')
 
 const { addDeviceClient } = require('./actions')
@@ -37,6 +37,13 @@ const wemoDeviceListenerEpic = (
 			})
 			.pipe(
 				filter(Boolean),
+				tap(({
+					friendlyName,
+				}) => {
+					console.info(
+						friendlyName
+					)
+				}),
 				map(device => (
 					wemoClient
 					.client(device)
