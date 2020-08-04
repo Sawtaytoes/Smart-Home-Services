@@ -60,9 +60,9 @@ const buttonConfigs = {
 	},
 
 	'80:e4:da:72:a8:e3': {
-		...ACTION_SET.SPARE_BEDROOM_CLOSET,
+		...ACTION_SET.KIDS_BEDROOM_CLOSET,
 		color: COLOR.WHITE,
-		location: "Spare Bedroom Closet Entryway",
+		location: "Kids Bedroom Closet Entryway",
 	},
 
 	'80:e4:da:72:3c:c9': {
@@ -155,9 +155,9 @@ const buttonConfigs = {
 	},
 
 	'80:e4:da:72:ab:3d': {
-		...ACTION_SET.SPARE_BEDROOM_VANITY,
+		...ACTION_SET.KIDS_BEDROOM_VANITY,
 		color: COLOR.CYAN,
-		location: "Spare Bedroom Vanity",
+		location: "Kids Bedroom Vanity",
 	},
 
 	'80:e4:da:72:a3:49': {
@@ -197,9 +197,9 @@ const buttonConfigs = {
 	},
 
 	'80:e4:da:72:5f:2b': {
-		...MULTI_ACTION_SET.SPARE_BEDROOM,
+		...MULTI_ACTION_SET.KIDS_BEDROOM,
 		color: COLOR.BLACK,
-		location: "Spare Bedroom Wall",
+		location: "Kids Bedroom Wall",
 	},
 
 	'80:e4:da:73:5d:fd': {
