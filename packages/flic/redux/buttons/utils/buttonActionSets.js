@@ -85,6 +85,24 @@ const NAME = {
 	BRIGHT_HALLWAY: 'Bright Hallway',
 	LATE_NIGHT_HALLWAY: 'Late Night Hallway',
 
+	// Kids Bedroom
+	KIDS_BEDROOM: 'Kids Bedroom',
+	NORMAL_KIDS_BEDROOM: 'Normal Kids Bedroom',
+	BRIGHT_KIDS_BEDROOM: 'Bright Kids Bedroom',
+	LATE_NIGHT_KIDS_BEDROOM: 'Late Night Kids Bedroom',
+
+	// Kids Bedroom Closet
+	KIDS_BEDROOM_CLOSET: 'Kids Bedroom Closet',
+	NORMAL_KIDS_BEDROOM_CLOSET: 'Normal Kids Bedroom Closet',
+	BRIGHT_KIDS_BEDROOM_CLOSET: 'Bright Kids Bedroom Closet',
+	LATE_NIGHT_KIDS_BEDROOM_CLOSET: 'Late Night Kids Bedroom Closet',
+
+	// Kids Bedroom Vanity
+	KIDS_BEDROOM_VANITY: 'Kids Bedroom Vanity',
+	NORMAL_KIDS_BEDROOM_VANITY: 'Normal Kids Bedroom Vanity',
+	BRIGHT_KIDS_BEDROOM_VANITY: 'Bright Kids Bedroom Vanity',
+	LATE_NIGHT_KIDS_BEDROOM_VANITY: 'Late Night Kids Bedroom Vanity',
+
 	// Kitchen
 	KITCHEN: 'Kitchen',
 	NORMAL_KITCHEN: 'Normal Kitchen',
@@ -152,24 +170,6 @@ const NAME = {
 	COLISSIO_SPEAKERS: 'Colissio Speakers',
 	LATE_NIGHT_COMPUTING: 'Late Night Computing',
 	RECORDING_LIGHTS: 'Recording Lights',
-
-	// Spare Bedroom
-	SPARE_BEDROOM: 'Spare Bedroom',
-	NORMAL_SPARE_BEDROOM: 'Normal Spare Bedroom',
-	BRIGHT_SPARE_BEDROOM: 'Bright Spare Bedroom',
-	LATE_NIGHT_SPARE_BEDROOM: 'Late Night Spare Bedroom',
-
-	// Spare Bedroom Closet
-	SPARE_BEDROOM_CLOSET: 'Spare Bedroom Closet',
-	NORMAL_SPARE_BEDROOM_CLOSET: 'Normal Spare Bedroom Closet',
-	BRIGHT_SPARE_BEDROOM_CLOSET: 'Bright Spare Bedroom Closet',
-	LATE_NIGHT_SPARE_BEDROOM_CLOSET: 'Late Night Spare Bedroom Closet',
-
-	// Spare Bedroom Vanity
-	SPARE_BEDROOM_VANITY: 'Spare Bedroom Vanity',
-	NORMAL_SPARE_BEDROOM_VANITY: 'Normal Spare Bedroom Vanity',
-	BRIGHT_SPARE_BEDROOM_VANITY: 'Bright Spare Bedroom Vanity',
-	LATE_NIGHT_SPARE_BEDROOM_VANITY: 'Late Night Spare Bedroom Vanity',
 }
 
 const getStandardLightingActionSet = (
@@ -244,6 +244,26 @@ const ACTION_SET = {
 		}],
 	},
 
+	ALL_KIDS_BEDROOM: {
+		[PRESS.TRIPLE_HOLD]: [{
+			action: ACTION.TURN_OFF_GROUP,
+			device: DEVICE.LIFX,
+			name: NAME.KIDS_BATHROOM,
+		}, {
+			action: ACTION.TURN_OFF_GROUP,
+			device: DEVICE.LIFX,
+			name: NAME.KIDS_BEDROOM,
+		}, {
+			action: ACTION.TURN_OFF_GROUP,
+			device: DEVICE.LIFX,
+			name: NAME.KIDS_BEDROOM_CLOSET,
+		}, {
+			action: ACTION.TURN_OFF_GROUP,
+			device: DEVICE.LIFX,
+			name: NAME.KIDS_BEDROOM_VANITY,
+		}],
+	},
+
 	ALL_KITCHEN: {
 		[PRESS.TRIPLE_HOLD]: [{
 			action: ACTION.TURN_OFF_GROUP,
@@ -298,26 +318,6 @@ const ACTION_SET = {
 			action: ACTION.TURN_OFF_GROUP,
 			device: DEVICE.LIFX,
 			name: NAME.MASTER_TOILET,
-		}],
-	},
-
-	ALL_SPARE_BEDROOM: {
-		[PRESS.TRIPLE_HOLD]: [{
-			action: ACTION.TURN_OFF_GROUP,
-			device: DEVICE.LIFX,
-			name: NAME.SPARE_BATHROOM,
-		}, {
-			action: ACTION.TURN_OFF_GROUP,
-			device: DEVICE.LIFX,
-			name: NAME.SPARE_BEDROOM,
-		}, {
-			action: ACTION.TURN_OFF_GROUP,
-			device: DEVICE.LIFX,
-			name: NAME.SPARE_BEDROOM_CLOSET,
-		}, {
-			action: ACTION.TURN_OFF_GROUP,
-			device: DEVICE.LIFX,
-			name: NAME.SPARE_BEDROOM_VANITY,
 		}],
 	},
 
@@ -450,19 +450,19 @@ const ACTION_SET = {
 		})
 	),
 
-	SPARE_BEDROOM: getStandardLightingActionSet('SPARE_BEDROOM'),
+	KIDS_BEDROOM: getStandardLightingActionSet('KIDS_BEDROOM'),
 
-	SPARE_BEDROOM_CLOSET: (
+	KIDS_BEDROOM_CLOSET: (
 		getRepeatedLightingActionSet({
-			roomName: 'SPARE_BEDROOM_CLOSET',
-			sceneName: 'NORMAL_SPARE_BEDROOM_CLOSET',
+			roomName: 'KIDS_BEDROOM_CLOSET',
+			sceneName: 'NORMAL_KIDS_BEDROOM_CLOSET',
 		})
 	),
 
-	SPARE_BEDROOM_VANITY: (
+	KIDS_BEDROOM_VANITY: (
 		getRepeatedLightingActionSet({
-			roomName: 'SPARE_BEDROOM_VANITY',
-			sceneName: 'NORMAL_SPARE_BEDROOM_VANITY',
+			roomName: 'KIDS_BEDROOM_VANITY',
+			sceneName: 'NORMAL_KIDS_BEDROOM_VANITY',
 		})
 	),
 
@@ -578,13 +578,6 @@ const MULTI_ACTION_SET = {
 		combineSets([
 			ACTION_SET.ALL_MASTER_BEDROOM,
 			ACTION_SET.MASTER_BEDROOM,
-		])
-	),
-
-	SPARE_BEDROOM: (
-		combineSets([
-			ACTION_SET.ALL_SPARE_BEDROOM,
-			ACTION_SET.SPARE_BEDROOM,
 		])
 	),
 }
