@@ -54,6 +54,7 @@ const NAME = {
 
 	// Garage
 	GARAGE: 'Garage',
+	GARAGE_STRING_LIGHTS: 'Garage String Lights',
 
 	// Guest Bathroom
 	GUEST_BATHROOM: 'Guest Bathroom',
@@ -376,6 +377,11 @@ const ACTION_SET = {
 			device: DEVICE.LIFX,
 			name: NAME.GARAGE,
 		},
+		[PRESS.TRIPLE]: {
+			action: ACTION.TOGGLE_DEVICE,
+			device: DEVICE.WEMO,
+			name: NAME.GARAGE_STRING_LIGHTS,
+		},
 	},
 
 	GUEST_BATHROOM: getStandardLightingActionSet('GUEST_BATHROOM'),
@@ -556,6 +562,13 @@ const MULTI_ACTION_SET = {
 		combineSets([
 			ACTION_SET.ALL_GUEST_BEDROOM,
 			ACTION_SET.GUEST_BEDROOM,
+		])
+	),
+
+	KIDS_BEDROOM: (
+		combineSets([
+			ACTION_SET.ALL_KIDS_BEDROOM,
+			ACTION_SET.KIDS_BEDROOM,
 		])
 	),
 
