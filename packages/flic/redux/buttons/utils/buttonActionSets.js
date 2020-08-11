@@ -372,16 +372,15 @@ const ACTION_SET = {
 	FAMILY_ROOM: getStandardLightingActionSet('FAMILY_ROOM'),
 
 	GARAGE: {
-		[PRESS.TRIPLE]: {
+		[PRESS.TRIPLE]: [{
 			action: ACTION.TOGGLE_GROUP,
 			device: DEVICE.LIFX,
 			name: NAME.GARAGE,
-		},
-		[PRESS.TRIPLE]: {
+		}, {
 			action: ACTION.TOGGLE_DEVICE,
 			device: DEVICE.WEMO,
 			name: NAME.GARAGE_STRING_LIGHTS,
-		},
+		}],
 	},
 
 	GUEST_BATHROOM: getStandardLightingActionSet('GUEST_BATHROOM'),
