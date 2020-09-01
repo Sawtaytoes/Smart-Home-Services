@@ -170,7 +170,7 @@ const NAME = {
 
 	COLISSIO_SPEAKERS: 'Colissio Speakers',
 	LATE_NIGHT_COMPUTING: 'Late Night Computing',
-	RECORDING_LIGHTS: 'Recording Lights',
+	STREAMING_LIGHTS: 'Streaming Lights',
 }
 
 const getStandardLightingActionSet = (
@@ -340,7 +340,7 @@ const ACTION_SET = {
 		[PRESS.DOUBLE]: {
 			action: ACTION.TOGGLE_DEVICE,
 			device: DEVICE.WEMO,
-			name: NAME.RECORDING_LIGHTS,
+			name: NAME.STREAMING_LIGHTS,
 		},
 		[PRESS.SINGLE_HOLD]: {
 			action: ACTION.TOGGLE_SCENE,
@@ -362,7 +362,7 @@ const ACTION_SET = {
 		}, {
 			action: ACTION.TURN_OFF_DEVICE,
 			device: DEVICE.WEMO,
-			RECORDING: NAME.RECORDING_LIGHTS,
+			name: NAME.STREAMING_LIGHTS,
 		}],
 	},
 
