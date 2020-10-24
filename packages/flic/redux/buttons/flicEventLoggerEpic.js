@@ -1,11 +1,10 @@
 const chalk = require('chalk')
 const { fromEvent, merge } = require('rxjs')
-const { ignoreElements, map, mergeMap, takeUntil, tap } = require('rxjs/operators')
+const { filter, ignoreElements, map, mergeMap, takeUntil, tap } = require('rxjs/operators')
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { ofType } = require('redux-observable')
 
 const { FLIC_CLIENT_READY, FLIC_CLIENT_TERMINATED } = require('./actions')
-const ofFlicClient = require('./utils/ofFlicClient')
 
 const fromFlicEvent = ({
 	flicClient,
@@ -138,9 +137,14 @@ const flicEventLoggerEpic = (
 					action$
 					.pipe(
 						ofType(FLIC_CLIENT_TERMINATED),
-						ofFlicClient(
-							flicClient
-						),
+						filter(({
+							flicClient: terminatedFlicClient,
+						}) => (
+							Object.is(
+								terminatedFlicClient,
+								flicClient,
+							)
+						))
 					)
 				),
 				map((

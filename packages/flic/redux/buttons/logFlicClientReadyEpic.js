@@ -1,12 +1,12 @@
 const chalk = require('chalk')
-const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { fromEvent } = require('rxjs')
 const { ignoreElements, mergeMap, take, tap } = require('rxjs/operators')
+const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { ofType } = require('redux-observable')
 
 const { FLIC_CLIENT_READY } = require('./actions')
 
-const newButtonAddedEpic = (
+const logFlicClientReadyEpic = (
 	action$,
 ) => (
 	action$
@@ -18,7 +18,7 @@ const newButtonAddedEpic = (
 		}) => (
 			fromEvent(
 				flicClient,
-				'newVerifiedButton',
+				'ready',
 			)
 			.pipe(
 				take(1),
@@ -36,13 +36,9 @@ const newButtonAddedEpic = (
 							.greenBright(hostname)
 						),
 						(
-							'has a new Flic button.'
+							'is ready!'
 						),
 					)
-				}),
-				tap(() => {
-					flicClient
-					.close()
 				}),
 			)
 		)),
@@ -51,4 +47,4 @@ const newButtonAddedEpic = (
 	)
 )
 
-module.exports = newButtonAddedEpic
+module.exports = logFlicClientReadyEpic

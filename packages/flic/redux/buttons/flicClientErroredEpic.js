@@ -1,24 +1,25 @@
 const chalk = require('chalk')
-const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { fromEvent } = require('rxjs')
-const { ignoreElements, mergeMap, take, tap } = require('rxjs/operators')
+const { mapTo, mergeMap, take, tap } = require('rxjs/operators')
+const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { ofType } = require('redux-observable')
 
-const { FLIC_CLIENT_READY } = require('./actions')
+const { ADDED_FLIC_CLIENT, restartFlicClient } = require('./actions')
 
-const newButtonAddedEpic = (
+const flicClientErroredEpic = (
 	action$,
 ) => (
 	action$
 	.pipe(
-		ofType(FLIC_CLIENT_READY),
+		ofType(ADDED_FLIC_CLIENT),
 		mergeMap(({
 			flicClient,
 			hostname,
+			port,
 		}) => (
 			fromEvent(
 				flicClient,
-				'newVerifiedButton',
+				'error',
 			)
 			.pipe(
 				take(1),
@@ -33,22 +34,23 @@ const newButtonAddedEpic = (
 						),
 						(
 							chalk
-							.greenBright(hostname)
+							.redBright(hostname)
 						),
 						(
-							'has a new Flic button.'
+							'is unavailable.'
 						),
 					)
 				}),
-				tap(() => {
-					flicClient
-					.close()
-				}),
+				mapTo(
+					restartFlicClient({
+						hostname,
+						port,
+					})
+				)
 			)
 		)),
-		ignoreElements(),
 		catchEpicError(),
 	)
 )
 
-module.exports = newButtonAddedEpic
+module.exports = flicClientErroredEpic
