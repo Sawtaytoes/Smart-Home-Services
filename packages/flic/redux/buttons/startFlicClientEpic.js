@@ -4,7 +4,7 @@ const { FlicClient } = require('fliclib/clientlib/nodejs/fliclibNodeJs')
 const { map, switchMap } = require('rxjs/operators')
 const { ofType } = require('redux-observable')
 
-const { addFlicClient } = require('./actions')
+const { addedFlicClient } = require('./actions')
 
 const startFlicClientEpic = (
 	action$,
@@ -42,7 +42,7 @@ const startFlicClientEpic = (
 			),
 			hostname,
 		})),
-		map(addFlicClient),
+		map(addedFlicClient),
 		catchEpicError(),
 	)
 )

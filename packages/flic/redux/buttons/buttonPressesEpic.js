@@ -5,7 +5,7 @@ const { FlicConnectionChannel } = require('fliclib/clientlib/nodejs/fliclibNodeJ
 const { ofType } = require('redux-observable')
 
 const {
-	ADD_FLIC_CLIENT,
+	ADDED_FLIC_CLIENT,
 	captureButtonPresses,
 } = require('./actions')
 
@@ -14,7 +14,7 @@ const buttonPressesEpic = (
 ) => (
 	action$
 	.pipe(
-		ofType(ADD_FLIC_CLIENT),
+		ofType(ADDED_FLIC_CLIENT),
 		mergeMap(({
 			flicClient,
 			hostname,
