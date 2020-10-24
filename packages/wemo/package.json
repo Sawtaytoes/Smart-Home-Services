@@ -7,7 +7,7 @@
     "debug": "nodemon --inspect app.js",
     "lint": "node app.js lint",
     "lint:watch": "nodemon app.js lint",
-    "start": "yarn && nodemon app.js",
+    "start": "nodemon app.js",
     "test": "ava",
     "test:watch": "ava --watch"
   },
