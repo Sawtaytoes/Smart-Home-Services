@@ -3,6 +3,6 @@ module.exports = {
 	lifxApiAddress: 'https://api.lifx.com/v1/',
 	lifxLanClient: {
 		messageHandlerTimeout: 2000,
-		resendMaxTimes: 10,
+		resendMaxTimes: 20,
 	},
 }
