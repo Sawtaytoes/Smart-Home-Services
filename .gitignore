@@ -21,6 +21,3 @@ node_modules
 
 # Visual Studio
 .vs
-
-# Yarn
-*.cjs
