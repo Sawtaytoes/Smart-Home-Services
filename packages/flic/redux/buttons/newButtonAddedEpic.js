@@ -1,68 +1,52 @@
 const chalk = require('chalk')
-const { fromEvent } = require('rxjs')
-const { filter, mapTo, mergeMap, take, tap } = require('rxjs/operators')
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
+const { fromEvent } = require('rxjs')
+const { mapTo, mergeMap, take, tap } = require('rxjs/operators')
 const { ofType } = require('redux-observable')
 
-const { FLIC_CLIENT_READY, START_FLIC_CLIENT, startFlicClient } = require('./actions')
+const { FLIC_CLIENT_READY_FOR_RESTART, startFlicClient } = require('./actions')
 
 const newButtonAddedEpic = (
 	action$,
 ) => (
 	action$
 	.pipe(
-		ofType(START_FLIC_CLIENT),
+		ofType(FLIC_CLIENT_READY_FOR_RESTART),
 		mergeMap(({
-			hostname: startedFlicClientHostname,
+			flicClient,
+			hostname,
 			port,
 		}) => (
-			action$
+			fromEvent(
+				flicClient,
+				'newVerifiedButton',
+			)
 			.pipe(
-				ofType(FLIC_CLIENT_READY),
-				filter(({
-					hostname: readiedFlicClientHostname,
-				}) => (
-					Object.is(
-						readiedFlicClientHostname,
-						startedFlicClientHostname,
+				take(1),
+				tap(() => {
+					console
+					.info(
+						(
+							chalk
+							.greenBright
+							.bgGreen
+							.bold('[DEBUG]')
+						),
+						(
+							chalk
+							.greenBright(hostname)
+						),
+						(
+							'has a new Flic button.'
+						),
 					)
-				)),
-				mergeMap(({
-					flicClient,
-					hostname,
-				}) => (
-					fromEvent(
-						flicClient,
-						'newVerifiedButton',
-					)
-					.pipe(
-						take(1),
-						tap(() => {
-							console
-							.info(
-								(
-									chalk
-									.greenBright
-									.bgGreen
-									.bold('[DEBUG]')
-								),
-								(
-									chalk
-									.greenBright(hostname)
-								),
-								(
-									'has a new Flic button.'
-								),
-							)
-						}),
-						mapTo(
-							startFlicClient({
-								hostname,
-								port,
-							})
-						)
-					)
-				)),
+				}),
+				mapTo(
+					startFlicClient({
+						hostname,
+						port,
+					})
+				)
 			)
 		)),
 		catchEpicError(),
