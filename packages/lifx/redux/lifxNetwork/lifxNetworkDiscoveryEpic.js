@@ -27,24 +27,25 @@ const lifxNetworkDiscoveryEpic = (
 						map(addLifxNetworkLight)
 					)
 				),
-				(
-					fromEvent(
-						lifxNetworkClient,
-						'light-offline',
-					)
-					.pipe(
-						map(removeLifxNetworkLight)
-					)
-				),
-				(
-					fromEvent(
-						lifxNetworkClient,
-						'light-online',
-					)
-					.pipe(
-						map(addLifxNetworkLight)
-					)
-				),
+				// TEMP. Figure out why this is happening constantly.
+				// (
+				// 	fromEvent(
+				// 		lifxNetworkClient,
+				// 		'light-offline',
+				// 	)
+				// 	.pipe(
+				// 		map(removeLifxNetworkLight)
+				// 	)
+				// ),
+				// (
+				// 	fromEvent(
+				// 		lifxNetworkClient,
+				// 		'light-online',
+				// 	)
+				// 	.pipe(
+				// 		map(addLifxNetworkLight)
+				// 	)
+				// ),
 				of(startNetworkListeners()),
 			)
 		)),
