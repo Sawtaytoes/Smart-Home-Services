@@ -5,6 +5,8 @@ const captureButtonPresses = require('./captureButtonPresses')
 const executeButtonPressesEpic = require('./executeButtonPressesEpic')
 const executeHttpCommandEpic = require('./executeHttpCommandEpic')
 const executeWebSocketCommandEpic = require('./executeWebSocketCommandEpic')
+const flicClientReadyEpic = require('./flicClientReadyEpic')
+const flicClientTerminatedEpic = require('./flicClientTerminatedEpic')
 const flicEventLoggerEpic = require('./flicEventLoggerEpic')
 const requestsEpic = require('./requestsEpic')
 const splitCommandsEpic = require('./splitCommandsEpic')
@@ -17,6 +19,8 @@ const buttonsEpic = (
 		executeButtonPressesEpic,
 		executeHttpCommandEpic,
 		executeWebSocketCommandEpic,
+		flicClientReadyEpic,
+		flicClientTerminatedEpic,
 		flicEventLoggerEpic,
 		requestsEpic,
 		splitCommandsEpic,

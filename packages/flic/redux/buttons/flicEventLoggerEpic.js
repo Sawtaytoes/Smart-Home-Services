@@ -1,293 +1,170 @@
 const chalk = require('chalk')
-const { fromEvent, merge, of } = require('rxjs')
-const { ignoreElements, map, mergeMap, switchMap, takeUntil, tap } = require('rxjs/operators')
+const { fromEvent, merge } = require('rxjs')
+const { ignoreElements, map, mergeMap, takeUntil, tap } = require('rxjs/operators')
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { ofType } = require('redux-observable')
 
-const { ADD_FLIC_CLIENT } = require('./actions')
+const { FLIC_CLIENT_READY, FLIC_CLIENT_TERMINATED } = require('./actions')
+const ofFlicClient = require('./utils/ofFlicClient')
+
+const fromFlicEvent = ({
+	flicClient,
+	eventName,
+}) => (
+	fromEvent(
+		flicClient,
+		eventName,
+	)
+	.pipe(
+		map((
+			payload,
+		) => (
+			payload
+			? {
+				eventName,
+				payload,
+			}
+			: {
+				eventName,
+			}
+		))
+	)
+)
+
 
 const flicEventLoggerEpic = (
 	action$,
 ) => (
 	action$
 	.pipe(
-		ofType(ADD_FLIC_CLIENT),
+		ofType(FLIC_CLIENT_READY),
 		mergeMap(({
 			flicClient,
 			hostname,
 		}) => (
-			fromEvent(
-				flicClient,
-				'ready',
+			merge(
+				(
+					fromFlicEvent({
+						flicClient,
+						eventName: 'advertisementPacket',
+					})
+				),
+				(
+					fromFlicEvent({
+						flicClient,
+						eventName: 'batteryStatus',
+					})
+				),
+				(
+					fromFlicEvent({
+						flicClient,
+						eventName: 'bluetoothControllerStateChange',
+					})
+				),
+				(
+					fromFlicEvent({
+						flicClient,
+						eventName: 'buttonConnected',
+					})
+				),
+				(
+					fromFlicEvent({
+						flicClient,
+						eventName: 'buttonDeleted',
+					})
+				),
+				(
+					fromFlicEvent({
+						flicClient,
+						eventName: 'completed',
+					})
+				),
+				(
+					fromFlicEvent({
+						flicClient,
+						eventName: 'connectionStatusChanged',
+					})
+				),
+				(
+					fromFlicEvent({
+						flicClient,
+						eventName: 'createResponse',
+					})
+				),
+				(
+					fromFlicEvent({
+						flicClient,
+						eventName: 'error',
+					})
+				),
+				(
+					fromFlicEvent({
+						flicClient,
+						eventName: 'foundPrivateButton',
+					})
+				),
+				(
+					fromFlicEvent({
+						flicClient,
+						eventName: 'foundPublicButton',
+					})
+				),
+				(
+					fromFlicEvent({
+						flicClient,
+						eventName: 'gotSpaceForNewConnection',
+					})
+				),
+				(
+					fromFlicEvent({
+						flicClient,
+						eventName: 'newVerifiedButton',
+					})
+				),
+				(
+					fromFlicEvent({
+						flicClient,
+						eventName: 'noSpaceForNewConnection',
+					})
+				),
+				(
+					fromFlicEvent({
+						flicClient,
+						eventName: 'removed',
+					})
+				),
 			)
 			.pipe(
 				takeUntil(
-					fromEvent(
-						flicClient,
-						'close',
+					action$
+					.pipe(
+						ofType(FLIC_CLIENT_TERMINATED),
+						ofFlicClient(
+							flicClient
+						),
 					)
 				),
 				map((
-					payload,
+					eventInfo,
 				) => ({
-					eventName: 'ready',
-					payload,
-				})),
-				switchMap((
-					info,
-				) => (
-					merge(
-						(
-							of(
-								info,
-							)
-						),
-						(
-							fromEvent(
-								flicClient,
-								'createResponse',
-							)
-							.pipe(
-								map((
-									payload,
-								) => ({
-									eventName: 'createResponse',
-									payload,
-								}))
-							)
-						),
-						(
-							fromEvent(
-								flicClient,
-								'connectionStatusChanged',
-							)
-							.pipe(
-								map((
-									payload,
-								) => ({
-									eventName: 'connectionStatusChanged',
-									payload,
-								}))
-							)
-						),
-						(
-							fromEvent(
-								flicClient,
-								'removed',
-							)
-							.pipe(
-								map((
-									payload,
-								) => ({
-									eventName: 'removed',
-									payload,
-								}))
-							)
-						),
-						(
-							fromEvent(
-								flicClient,
-								'batteryStatus',
-							)
-							.pipe(
-								map((
-									payload,
-								) => ({
-									eventName: 'batteryStatus',
-									payload,
-								}))
-							)
-						),
-						(
-							fromEvent(
-								flicClient,
-								'advertisementPacket',
-							)
-							.pipe(
-								map((
-									payload,
-								) => ({
-									eventName: 'advertisementPacket',
-									payload,
-								}))
-							)
-						),
-						(
-							fromEvent(
-								flicClient,
-								'foundPrivateButton',
-							)
-							.pipe(
-								map((
-									payload,
-								) => ({
-									eventName: 'foundPrivateButton',
-									payload,
-								}))
-							)
-						),
-						(
-							fromEvent(
-								flicClient,
-								'foundPublicButton',
-							)
-							.pipe(
-								map((
-									payload,
-								) => ({
-									eventName: 'foundPublicButton',
-									payload,
-								}))
-							)
-						),
-						(
-							fromEvent(
-								flicClient,
-								'buttonConnected',
-							)
-							.pipe(
-								map((
-									payload,
-								) => ({
-									eventName: 'buttonConnected',
-									payload,
-								}))
-							)
-						),
-						(
-							fromEvent(
-								flicClient,
-								'completed',
-							)
-							.pipe(
-								map((
-									payload,
-								) => ({
-									eventName: 'completed',
-									payload,
-								}))
-							)
-						),
-						(
-							fromEvent(
-								flicClient,
-								'close',
-							)
-							.pipe(
-								map((
-									payload,
-								) => ({
-									eventName: 'close',
-									payload,
-								}))
-							)
-						),
-						(
-							fromEvent(
-								flicClient,
-								'newVerifiedButton',
-							)
-							.pipe(
-								map((
-									payload,
-								) => ({
-									eventName: 'newVerifiedButton',
-									payload,
-								}))
-							)
-						),
-						(
-							fromEvent(
-								flicClient,
-								'noSpaceForNewConnection',
-							)
-							.pipe(
-								map((
-									payload,
-								) => ({
-									eventName: 'noSpaceForNewConnection',
-									payload,
-								}))
-							)
-						),
-						(
-							fromEvent(
-								flicClient,
-								'gotSpaceForNewConnection',
-							)
-							.pipe(
-								map((
-									payload,
-								) => ({
-									eventName: 'gotSpaceForNewConnection',
-									payload,
-								}))
-							)
-						),
-						(
-							fromEvent(
-								flicClient,
-								'bluetoothControllerStateChange',
-							)
-							.pipe(
-								map((
-									payload,
-								) => ({
-									eventName: 'bluetoothControllerStateChange',
-									payload,
-								}))
-							)
-						),
-						(
-							fromEvent(
-								flicClient,
-								'buttonDeleted',
-							)
-							.pipe(
-								map((
-									payload,
-								) => ({
-									eventName: 'buttonDeleted',
-									payload,
-								}))
-							)
-						),
-						(
-							fromEvent(
-								flicClient,
-								'error',
-							)
-							.pipe(
-								map((
-									payload,
-								) => ({
-									eventName: 'error',
-									payload,
-								}))
-							)
-						),
-					)
-				)),
-				map((
-					info,
-				) => ({
-					...info,
+					...eventInfo,
 					hostname,
 				})),
 			)
 		)),
 		tap((
-			info,
+			eventInfo,
 		) => {
 			console
 			.info(
 				(
 					chalk
-					.redBright('[DEBUG]')
+					.redBright
+					.bgRed('[EVENT LOG]')
 					.concat('\n')
 				),
 				(
-					info
+					eventInfo
 				),
 			)
 		}),
