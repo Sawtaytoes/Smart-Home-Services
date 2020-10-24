@@ -1,6 +1,6 @@
 const chalk = require('chalk')
 const { fromEvent } = require('rxjs')
-const { mapTo, mergeMap, tap } = require('rxjs/operators')
+const { mapTo, mergeMap, take, tap } = require('rxjs/operators')
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { ofType } = require('redux-observable')
 
@@ -21,6 +21,7 @@ const flicClientTerminatedEpic = (
 				'close',
 			)
 			.pipe(
+				take(1),
 				tap(() => {
 					console
 					.info(
