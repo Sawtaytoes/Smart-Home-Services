@@ -4,7 +4,7 @@ const { mapTo, mergeMap, takeUntil, tap } = require('rxjs/operators')
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { ofType } = require('redux-observable')
 
-const { ADD_FLIC_CLIENT, flicClientReady, FLIC_CLIENT_TERMINATED } = require('./actions')
+const { ADDED_FLIC_CLIENT, flicClientReady, FLIC_CLIENT_TERMINATED } = require('./actions')
 const ofFlicClient = require('./utils/ofFlicClient')
 
 const flicClientReadyEpic = (
@@ -12,7 +12,7 @@ const flicClientReadyEpic = (
 ) => (
 	action$
 	.pipe(
-		ofType(ADD_FLIC_CLIENT),
+		ofType(ADDED_FLIC_CLIENT),
 		mergeMap(({
 			flicClient,
 			hostname,
