@@ -9,6 +9,7 @@ const executeWebSocketCommandEpic = require('./executeWebSocketCommandEpic')
 const flicClientReadyEpic = require('./flicClientReadyEpic')
 const flicClientTerminatedEpic = require('./flicClientTerminatedEpic')
 const flicEventLoggerEpic = require('./flicEventLoggerEpic')
+const newButtonAddedEpic = require('./newButtonAddedEpic')
 const requestsEpic = require('./requestsEpic')
 const splitCommandsEpic = require('./splitCommandsEpic')
 const startFlicClientEpic = require('./startFlicClientEpic')
@@ -24,6 +25,7 @@ const buttonsEpic = (
 		flicClientReadyEpic,
 		flicClientTerminatedEpic,
 		flicEventLoggerEpic,
+		newButtonAddedEpic,
 		requestsEpic,
 		splitCommandsEpic,
 		startFlicClientEpic,
