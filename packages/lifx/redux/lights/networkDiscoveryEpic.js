@@ -45,7 +45,7 @@ const removeLightEpic = (
 const networkDiscoveryEpic = (
 	combineEpics(
 		addLightsEpic,
-		removeLightEpic,
+		// removeLightEpic, // TEMP. Figure out why this keeps getting called all the time.
 	)
 )
 
