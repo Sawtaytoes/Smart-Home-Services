@@ -1,5 +1,6 @@
 const { combineEpics } = require('redux-observable')
 
+const addFlicClientEpic = require('./addFlicClientEpic')
 const buttonPressesEpic = require('./buttonPressesEpic')
 const captureButtonPresses = require('./captureButtonPresses')
 const executeButtonPressesEpic = require('./executeButtonPressesEpic')
@@ -14,6 +15,7 @@ const startFlicClientEpic = require('./startFlicClientEpic')
 
 const buttonsEpic = (
 	combineEpics(
+		addFlicClientEpic,
 		buttonPressesEpic,
 		captureButtonPresses,
 		executeButtonPressesEpic,
