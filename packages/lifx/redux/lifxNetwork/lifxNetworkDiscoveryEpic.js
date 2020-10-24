@@ -6,7 +6,7 @@ const { ofType } = require('redux-observable')
 const {
 	ADD_LIFX_NETWORK_CLIENT,
 	addLifxNetworkLight,
-	removeLifxNetworkLight,
+	// removeLifxNetworkLight,
 	startNetworkListeners,
 } = require('./actions')
 
