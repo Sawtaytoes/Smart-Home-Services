@@ -35,14 +35,14 @@
     ]
   },
   "dependencies": {
-    "@redux-observable-backend/core": "^4.3.2",
-    "@redux-observable-backend/node": "^4.3.2",
-    "@redux-observable-backend/redux-utils": "^4.3.2",
-    "@redux-observable-backend/websocket": "^4.3.2",
-    "better-module-alias": "^1.0.1",
-    "chalk": "^2.4.2",
+    "@redux-observable-backend/core": "^4.4.0",
+    "@redux-observable-backend/node": "^4.4.0",
+    "@redux-observable-backend/redux-utils": "^4.4.0",
+    "@redux-observable-backend/websocket": "^4.4.0",
+    "better-module-alias": "^1.1.0",
+    "chalk": "^4.1.0",
     "fliclib": "git+https://github.com/50ButtonsEach/fliclib-linux-hci.git#73a8acb1531ad1b33480b4234ffff0a290d8a1aa",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   },
   "publishConfig": {
     "access": "public"
