@@ -1,3 +1,4 @@
+process.env.FORCE_COLOR = 3
 // Include this import before other local imports.
 require('better-module-alias')(__dirname)
 
