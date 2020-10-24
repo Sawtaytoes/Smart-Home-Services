@@ -31,7 +31,6 @@ const fromFlicEvent = ({
 	)
 )
 
-
 const flicEventLoggerEpic = (
 	action$,
 ) => (
