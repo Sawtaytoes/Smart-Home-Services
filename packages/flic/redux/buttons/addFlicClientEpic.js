@@ -22,6 +22,7 @@ const addFlicClientEpic = (
 				)
 			),
 			hostname,
+			port,
 		})),
 		map(addedFlicClient),
 		catchEpicError(),

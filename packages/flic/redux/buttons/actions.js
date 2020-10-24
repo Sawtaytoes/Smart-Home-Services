@@ -3,17 +3,19 @@ const CAPTURE_BUTTON_PRESSES = 'BUTTON_PRESSES::CAPTURE_BUTTON_PRESSES'
 const EXECUTE_BUTTON_PRESSES = 'BUTTON_PRESSES::EXECUTE_BUTTON_PRESSES'
 const EXECUTE_COMMAND = 'BUTTON_PRESSES::EXECUTE_COMMAND'
 const FLIC_CLIENT_READY = 'BUTTON_PRESSES::FLIC_CLIENT_READY'
-const FLIC_CLIENT_READY_FOR_RESTART = 'BUTTON_PRESSES::FLIC_CLIENT_READY_FOR_RESTART'
 const FLIC_CLIENT_TERMINATED = 'BUTTON_PRESSES::FLIC_CLIENT_TERMINATED'
+const RESTART_FLIC_CLIENT = 'BUTTON_PRESSES::RESTART_FLIC_CLIENT'
 const SPLIT_COMMANDS = 'BUTTON_PRESSES::SPLIT_COMMANDS'
 const START_FLIC_CLIENT = 'BUTTON_PRESSES::START_FLIC_CLIENT'
 
 const addedFlicClient = ({
 	flicClient,
 	hostname,
+	port,
 }) => ({
 	flicClient,
 	hostname,
+	port,
 	type: ADDED_FLIC_CLIENT,
 })
 
@@ -55,19 +57,12 @@ const executeCommand = ({
 const flicClientReady = ({
 	flicClient,
 	hostname,
+	port,
 }) => ({
 	flicClient,
 	hostname,
+	port,
 	type: FLIC_CLIENT_READY,
-})
-
-const flicClientReadyForRestart = ({
-	flicClient,
-	hostname,
-}) => ({
-	flicClient,
-	hostname,
-	type: FLIC_CLIENT_READY_FOR_RESTART,
 })
 
 const flicClientTerminated = ({
@@ -75,6 +70,15 @@ const flicClientTerminated = ({
 }) => ({
 	flicClient,
 	type: FLIC_CLIENT_TERMINATED,
+})
+
+const restartFlicClient = ({
+	hostname,
+	port,
+}) => ({
+	hostname,
+	port,
+	type: RESTART_FLIC_CLIENT,
 })
 
 const splitCommands = (
@@ -110,11 +114,11 @@ module.exports = {
 	executeButtonPresses,
 	executeCommand,
 	FLIC_CLIENT_READY,
-	FLIC_CLIENT_READY_FOR_RESTART,
 	FLIC_CLIENT_TERMINATED,
 	flicClientReady,
-	flicClientReadyForRestart,
 	flicClientTerminated,
+	RESTART_FLIC_CLIENT,
+	restartFlicClient,
 	SPLIT_COMMANDS,
 	splitCommands,
 	START_FLIC_CLIENT,
