@@ -33,7 +33,7 @@ const epicMiddleware = (
 const middleware = (
 	applyMiddleware(
 		actionLoggerMiddleware,
-		epicMiddleware
+		epicMiddleware,
 	)
 )
 
