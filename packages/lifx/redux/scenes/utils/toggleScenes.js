@@ -2,7 +2,7 @@ const chalk = require('chalk')
 const createAudioPlayer = require('play-sound')
 const { bindNodeCallback, from, merge, of } = require('rxjs')
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
-const { every, filter, map, mapTo, mergeAll, mergeMap, pluck, switchMap, tap, toArray } = require('rxjs/operators')
+const { every, filter, map, mapTo, mergeAll, mergeMap, pluck, retry, switchMap, tap, toArray } = require('rxjs/operators')
 
 const { selectNetworkLight } = require('$redux/lights/selectors')
 const { unlockLights } = require('$redux/lights/actions')
@@ -127,6 +127,7 @@ const toggleScenes = ({
 							sceneLightColor,
 							sceneLightPower,
 						})),
+						retry(10),
 						catchEpicError(
 							of(null)
 						),
@@ -136,6 +137,7 @@ const toggleScenes = ({
 		)),
 		filter(Boolean),
 		toArray(),
+		tap(t => console.log('Available Lights', t)),
 		switchMap((
 			lightStates,
 		) => (
