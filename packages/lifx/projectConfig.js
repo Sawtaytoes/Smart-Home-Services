@@ -2,7 +2,7 @@ module.exports = {
 	applicationName: 'lifxController',
 	lifxApiAddress: 'https://api.lifx.com/v1/',
 	lifxLanClient: {
-		messageHandlerTimeout: 50,
+		messageHandlerTimeout: 500,
 		resendMaxTimes: 20,
 	},
 }
