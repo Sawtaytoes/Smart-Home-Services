@@ -279,6 +279,13 @@ const buttonConfigs = {
 		color: COLOR.WHITE,
 		location: "Kitchen Bathroom",
 	},
+
+	'80:e4:da:77:0c:d8': {
+		...ACTION_SET.OFFICE,
+		bluetoothHost: "Elderberry-Pi",
+		color: COLOR.WHITE,
+		location: "Kevin's Desk for Testing",
+	},
 }
 
 module.exports = buttonConfigs
