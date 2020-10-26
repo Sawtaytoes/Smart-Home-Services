@@ -17,7 +17,7 @@ const logDebugMessage = (
 			(
 				debugMessage
 				.replace(
-					/(\|\|\|.+\|\|\|)/gm,
+					/\|\|\|(.+)\|\|\|/gm,
 					chalk[colorReplacement](
 						'$1'
 					)
