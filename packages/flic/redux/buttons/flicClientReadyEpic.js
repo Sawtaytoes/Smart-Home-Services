@@ -1,31 +1,37 @@
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
-const { filter, map, mergeMap, take } = require('rxjs/operators')
+const { map, mergeMap, take } = require('rxjs/operators')
+const { fromEvent } = require('rxjs')
 const { ofType } = require('redux-observable')
 
-const { FLIC_CLIENT_READY, START_FLIC_CLIENT, flicClientReady } = require('./actions')
+const logDebugMessage = require('./utils/logDebugMessage')
+const takeUntilFlicClientTerminated = require('./utils/takeUntilFlicClientTerminated')
+const { ADDED_FLIC_CLIENT, flicClientReady } = require('./actions')
 
 const flicClientReadyEpic = (
 	action$,
 ) => (
 	action$
 	.pipe(
-		ofType(START_FLIC_CLIENT),
+		ofType(ADDED_FLIC_CLIENT),
 		mergeMap(({
-			hostname: startedFlicClientHostname,
+			flicClient,
+			hostname,
 			port,
 		}) => (
-			action$
+			fromEvent(
+				flicClient,
+				'ready',
+			)
 			.pipe(
-				ofType(FLIC_CLIENT_READY),
-				filter(({
-					hostname: readiedFlicClientHostname,
-				}) => (
-					Object.is(
-						readiedFlicClientHostname,
-						startedFlicClientHostname,
-					)
-				)),
 				take(1),
+				takeUntilFlicClientTerminated({
+					action$,
+					flicClient,
+				}),
+				logDebugMessage(
+					`|||${hostname}||| is ready!`,
+					'greenBright',
+				),
 				map(({
 					flicClient,
 					hostname,

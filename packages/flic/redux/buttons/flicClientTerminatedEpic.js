@@ -1,10 +1,11 @@
-const chalk = require('chalk')
 const { fromEvent } = require('rxjs')
-const { mapTo, mergeMap, take, tap } = require('rxjs/operators')
+const { mapTo, mergeMap, take } = require('rxjs/operators')
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { ofType } = require('redux-observable')
 
-const { ADDED_FLIC_CLIENT, flicClientTerminated } = require('./actions')
+const logDebugMessage = require('./utils/logDebugMessage')
+const takeUntilFlicClientTerminated = require('./utils/takeUntilFlicClientTerminated')
+const { ADDED_FLIC_CLIENT, restartFlicClient } = require('./actions')
 
 const flicClientTerminatedEpic = (
 	action$,
@@ -15,6 +16,7 @@ const flicClientTerminatedEpic = (
 		mergeMap(({
 			flicClient,
 			hostname,
+			port,
 		}) => (
 			fromEvent(
 				flicClient,
@@ -22,28 +24,19 @@ const flicClientTerminatedEpic = (
 			)
 			.pipe(
 				take(1),
-				tap(() => {
-					console
-					.info(
-						(
-							chalk
-							.greenBright
-							.bgGreen
-							.bold('[DEBUG]')
-						),
-						(
-							chalk
-							.redBright(hostname)
-						),
-						(
-							'was terminated!'
-						),
-					)
+				takeUntilFlicClientTerminated({
+					action$,
+					flicClient,
 				}),
+				logDebugMessage(
+					`|||${hostname}||| was terminated.`,
+					'greenBright',
+				),
 				mapTo(
-					flicClientTerminated({
+					restartFlicClient({
 						flicClient,
 						hostname,
+						port,
 					})
 				)
 			)
