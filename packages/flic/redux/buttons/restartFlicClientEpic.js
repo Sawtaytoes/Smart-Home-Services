@@ -1,9 +1,9 @@
-const chalk = require('chalk')
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
-const { mapTo, mergeMap, tap } = require('rxjs/operators')
+const { mapTo, mergeMap } = require('rxjs/operators')
 const { ofType } = require('redux-observable')
 const { timer } = require('rxjs')
 
+const logDebugMessage = require('./utils/logDebugMessage')
 const { RESTART_FLIC_CLIENT, startFlicClient } = require('./actions')
 
 const restartFlicClientEpic = (
@@ -18,25 +18,10 @@ const restartFlicClientEpic = (
 		}) => (
 			timer(5000)
 			.pipe(
-				tap(() => {
-					console
-					.info(
-						(
-							chalk
-							.greenBright
-							.bgGreen
-							.bold('[DEBUG]')
-						),
-						(
-							'Reconnecting to'
-						),
-						(
-							chalk
-							.greenBright(hostname)
-							.concat('...')
-						),
-					)
-				}),
+				logDebugMessage(
+					`Reconnecting to |||${hostname}|||...`,
+					'greenBright',
+				),
 				mapTo(
 					startFlicClient({
 						hostname,

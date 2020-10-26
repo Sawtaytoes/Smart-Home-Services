@@ -1,12 +1,13 @@
 const chalk = require('chalk')
 const { fromEvent, merge } = require('rxjs')
-const { filter, ignoreElements, map, mergeMap, takeUntil, tap } = require('rxjs/operators')
+const { ignoreElements, map, mergeMap, tap } = require('rxjs/operators')
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { ofType } = require('redux-observable')
 
+const takeUntilFlicClientTerminated = require('./utils/takeUntilFlicClientTerminated')
 const { ADDED_FLIC_CLIENT, FLIC_CLIENT_TERMINATED } = require('./actions')
 
-const fromFlicEvent = ({
+const fromFlicClientEvent = ({
 	flicClient,
 	eventName,
 }) => (
@@ -42,111 +43,95 @@ const flicEventLoggerEpic = (
 		}) => (
 			merge(
 				(
-					fromFlicEvent({
+					fromFlicClientEvent({
 						flicClient,
 						eventName: 'advertisementPacket',
 					})
 				),
 				(
-					fromFlicEvent({
+					fromFlicClientEvent({
 						flicClient,
 						eventName: 'batteryStatus',
 					})
 				),
 				(
-					fromFlicEvent({
+					fromFlicClientEvent({
 						flicClient,
 						eventName: 'bluetoothControllerStateChange',
 					})
 				),
 				(
-					fromFlicEvent({
+					fromFlicClientEvent({
 						flicClient,
 						eventName: 'buttonConnected',
 					})
 				),
 				(
-					fromFlicEvent({
+					fromFlicClientEvent({
 						flicClient,
 						eventName: 'buttonDeleted',
 					})
 				),
 				(
-					fromFlicEvent({
+					fromFlicClientEvent({
 						flicClient,
 						eventName: 'completed',
 					})
 				),
 				(
-					fromFlicEvent({
+					fromFlicClientEvent({
 						flicClient,
 						eventName: 'connectionStatusChanged',
 					})
 				),
 				(
-					fromFlicEvent({
+					fromFlicClientEvent({
 						flicClient,
 						eventName: 'createResponse',
 					})
 				),
 				(
-					fromFlicEvent({
-						flicClient,
-						eventName: 'error',
-					})
-				),
-				(
-					fromFlicEvent({
+					fromFlicClientEvent({
 						flicClient,
 						eventName: 'foundPrivateButton',
 					})
 				),
 				(
-					fromFlicEvent({
+					fromFlicClientEvent({
 						flicClient,
 						eventName: 'foundPublicButton',
 					})
 				),
 				(
-					fromFlicEvent({
+					fromFlicClientEvent({
 						flicClient,
 						eventName: 'gotSpaceForNewConnection',
 					})
 				),
 				(
-					fromFlicEvent({
+					fromFlicClientEvent({
 						flicClient,
 						eventName: 'newVerifiedButton',
 					})
 				),
 				(
-					fromFlicEvent({
+					fromFlicClientEvent({
 						flicClient,
 						eventName: 'noSpaceForNewConnection',
 					})
 				),
 				(
-					fromFlicEvent({
+					fromFlicClientEvent({
 						flicClient,
 						eventName: 'removed',
 					})
 				),
 			)
 			.pipe(
-				takeUntil(
-					action$
-					.pipe(
-						ofType(FLIC_CLIENT_TERMINATED),
-						filter(({
-							flicClient: terminatedFlicClient,
-						}) => (
-							Object.is(
-								terminatedFlicClient,
-								flicClient,
-							)
-						))
-					)
-				),
+				takeUntilFlicClientTerminated({
+					action$,
+					flicClient,
+				}),
 				map((
 					eventInfo,
 				) => ({
@@ -163,7 +148,7 @@ const flicEventLoggerEpic = (
 				(
 					chalk
 					.orangeBright
-					.bgOrange('[EVENT LOG]')
+					.bgOrange('[Event Log]')
 					.concat('\n')
 				),
 				(

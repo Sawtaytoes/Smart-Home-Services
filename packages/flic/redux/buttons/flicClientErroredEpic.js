@@ -1,9 +1,10 @@
-const chalk = require('chalk')
 const { fromEvent } = require('rxjs')
-const { mapTo, mergeMap, take, tap } = require('rxjs/operators')
+const { mapTo, mergeMap, take } = require('rxjs/operators')
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { ofType } = require('redux-observable')
 
+const logDebugMessage = require('./utils/logDebugMessage')
+const takeUntilFlicClientTerminated = require('./utils/takeUntilFlicClientTerminated')
 const { ADDED_FLIC_CLIENT, restartFlicClient } = require('./actions')
 
 const flicClientErroredEpic = (
@@ -23,26 +24,17 @@ const flicClientErroredEpic = (
 			)
 			.pipe(
 				take(1),
-				tap(() => {
-					console
-					.info(
-						(
-							chalk
-							.greenBright
-							.bgGreen
-							.bold('[DEBUG]')
-						),
-						(
-							chalk
-							.redBright(hostname)
-						),
-						(
-							'is unavailable.'
-						),
-					)
+				takeUntilFlicClientTerminated({
+					action$,
+					flicClient,
 				}),
+				logDebugMessage(
+					`|||${hostname}||| is unavailable.`,
+					'redBright',
+				),
 				mapTo(
 					restartFlicClient({
+						flicClient,
 						hostname,
 						port,
 					})
