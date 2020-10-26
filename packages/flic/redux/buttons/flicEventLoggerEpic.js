@@ -4,7 +4,7 @@ const { filter, ignoreElements, map, mergeMap, takeUntil, tap } = require('rxjs/
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { ofType } = require('redux-observable')
 
-const { FLIC_CLIENT_READY, FLIC_CLIENT_TERMINATED } = require('./actions')
+const { ADDED_FLIC_CLIENT, FLIC_CLIENT_TERMINATED } = require('./actions')
 
 const fromFlicEvent = ({
 	flicClient,
@@ -35,7 +35,7 @@ const flicEventLoggerEpic = (
 ) => (
 	action$
 	.pipe(
-		ofType(FLIC_CLIENT_READY),
+		ofType(ADDED_FLIC_CLIENT),
 		mergeMap(({
 			flicClient,
 			hostname,
@@ -162,8 +162,8 @@ const flicEventLoggerEpic = (
 			.info(
 				(
 					chalk
-					.redBright
-					.bgRed('[EVENT LOG]')
+					.orangeBright
+					.bgOrange('[EVENT LOG]')
 					.concat('\n')
 				),
 				(
