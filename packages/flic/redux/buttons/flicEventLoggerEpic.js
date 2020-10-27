@@ -5,7 +5,7 @@ const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { ofType } = require('redux-observable')
 
 const takeUntilFlicClientTerminated = require('./utils/takeUntilFlicClientTerminated')
-const { ADDED_FLIC_CLIENT, FLIC_CLIENT_TERMINATED } = require('./actions')
+const { ADDED_FLIC_CLIENT } = require('./actions')
 
 const fromFlicClientEvent = ({
 	flicClient,
