@@ -1,11 +1,11 @@
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
-const { map, mergeMap, take } = require('rxjs/operators')
+const { ignoreElements, mergeMap, take } = require('rxjs/operators')
 const { fromEvent } = require('rxjs')
 const { ofType } = require('redux-observable')
 
 const logDebugMessage = require('./utils/logDebugMessage')
 const takeUntilFlicClientTerminated = require('./utils/takeUntilFlicClientTerminated')
-const { ADDED_FLIC_CLIENT, flicClientReady } = require('./actions')
+const { ADDED_FLIC_CLIENT } = require('./actions')
 
 const flicClientReadyEpic = (
 	action$,
@@ -16,7 +16,6 @@ const flicClientReadyEpic = (
 		mergeMap(({
 			flicClient,
 			hostname,
-			port,
 		}) => (
 			fromEvent(
 				flicClient,
@@ -32,18 +31,9 @@ const flicClientReadyEpic = (
 					`|||${hostname}||| is ready!`,
 					'greenBright',
 				),
-				map(({
-					flicClient,
-					hostname,
-				}) => (
-					flicClientReady({
-						flicClient,
-						hostname,
-						port,
-					})
-				)),
 			)
 		)),
+		ignoreElements(),
 		catchEpicError(),
 	)
 )
