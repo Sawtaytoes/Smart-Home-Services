@@ -3,14 +3,14 @@ const { fromEvent } = require('rxjs')
 const { mapTo, mergeMap, take } = require('rxjs/operators')
 const { ofType } = require('redux-observable')
 
-const { FLIC_CLIENT_READY, restartFlicClient } = require('./actions')
+const { FLIC_CLIENT_ADDED, restartFlicClient } = require('./actions')
 
 const reconnectOnTeminationEpic = (
 	action$,
 ) => (
 	action$
 	.pipe(
-		ofType(FLIC_CLIENT_READY),
+		ofType(FLIC_CLIENT_ADDED),
 		mergeMap(({
 			flicClient,
 			hostname,
