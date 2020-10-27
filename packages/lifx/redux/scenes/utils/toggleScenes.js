@@ -136,7 +136,6 @@ const toggleScenes = ({
 		)),
 		filter(Boolean),
 		toArray(),
-		tap(t => console.log('Available Lights', t)),
 		switchMap((
 			lightStates,
 		) => (
