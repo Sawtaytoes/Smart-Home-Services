@@ -1,10 +1,10 @@
 const chalk = require('chalk')
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
-const { fromEvent } = require('rxjs')
-const { ignoreElements, mergeMap, take, tap } = require('rxjs/operators')
+const { mapTo, mergeMap, take, tap } = require('rxjs/operators')
 const { ofType } = require('redux-observable')
 
-const { FLIC_CLIENT_ADDED } = require('./actions')
+const fromFlicClientEvent = require('./utils/fromFlicClientEvent')
+const { FLIC_CLIENT_ADDED, restartFlicClient } = require('./actions')
 
 const newButtonAddedEpic = (
 	action$,
@@ -15,11 +15,13 @@ const newButtonAddedEpic = (
 		mergeMap(({
 			flicClient,
 			hostname,
+			port,
 		}) => (
-			fromEvent(
+			fromFlicClientEvent({
+				action$,
+				eventName: 'newVerifiedButton',
 				flicClient,
-				'newVerifiedButton',
-			)
+			})
 			.pipe(
 				take(1),
 				tap(() => {
@@ -40,13 +42,14 @@ const newButtonAddedEpic = (
 						),
 					)
 				}),
-				tap(() => {
-					flicClient
-					.close()
-				}),
+				mapTo(
+					restartFlicClient({
+						hostname,
+						port,
+					})
+				)
 			)
 		)),
-		ignoreElements(),
 		catchEpicError(),
 	)
 )
