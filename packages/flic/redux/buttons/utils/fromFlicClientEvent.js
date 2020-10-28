@@ -1,6 +1,6 @@
 const { fromEvent } = require('rxjs')
 
-const takeUntilFlicClientTerminated = require('./utils/takeUntilFlicClientTerminated')
+const takeUntilFlicClientTerminated = require('./takeUntilFlicClientTerminated')
 
 const fromFlicClientEvent = ({
 	action$,
