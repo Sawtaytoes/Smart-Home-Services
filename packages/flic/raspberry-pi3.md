@@ -67,13 +67,6 @@ crontab -e
 @reboot /home/pi/scripts/start-flic-daemon.sh
 ```
 
-## Install Audio Player
-If you want to allow audible beeps denoting when buttons are pressed, install `omxplayer`.
-
-```shell
-apt-get install omxplayer
-```
-
 
 # [Wi-Fi Setup](https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md)
 Can instead use `sudo raspi-config` > Network Options > Wi-Fi

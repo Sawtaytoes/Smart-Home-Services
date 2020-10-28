@@ -44,8 +44,7 @@
     "better-module-alias": "^1.1.0",
     "chalk": "^4.1.0",
     "lifx-lan-client": "^1.0.2",
-    "node-fetch": "^2.6.1",
-    "play-sound": "^1.1.3"
+    "node-fetch": "^2.6.1"
   },
   "publishConfig": {
     "access": "public"
