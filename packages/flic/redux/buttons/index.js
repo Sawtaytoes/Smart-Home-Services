@@ -11,7 +11,6 @@ const flicClientReadyEpic = require('./flicClientReadyEpic')
 const flicClientTerminatedEpic = require('./flicClientTerminatedEpic')
 const flicEventLoggerEpic = require('./flicEventLoggerEpic')
 const newButtonAddedEpic = require('./newButtonAddedEpic')
-const reconnectOnTeminationEpic = require('./reconnectOnTeminationEpic')
 const requestsEpic = require('./requestsEpic')
 const restartFlicClientEpic = require('./restartFlicClientEpic')
 const splitCommandsEpic = require('./splitCommandsEpic')
@@ -30,7 +29,6 @@ const buttonsEpic = (
 		flicClientTerminatedEpic,
 		flicEventLoggerEpic,
 		newButtonAddedEpic,
-		reconnectOnTeminationEpic,
 		requestsEpic,
 		restartFlicClientEpic,
 		splitCommandsEpic,

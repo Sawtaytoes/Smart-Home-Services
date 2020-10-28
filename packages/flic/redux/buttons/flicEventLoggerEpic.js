@@ -7,7 +7,7 @@ const { ofType } = require('redux-observable')
 const takeUntilFlicClientTerminated = require('./utils/takeUntilFlicClientTerminated')
 const { ADDED_FLIC_CLIENT } = require('./actions')
 
-const fromFlicClientEvent = ({
+const fromFlicClientEventPayload = ({
 	flicClient,
 	eventName,
 }) => (
@@ -43,85 +43,85 @@ const flicEventLoggerEpic = (
 		}) => (
 			merge(
 				(
-					fromFlicClientEvent({
+					fromFlicClientEventPayload({
 						flicClient,
 						eventName: 'advertisementPacket',
 					})
 				),
 				(
-					fromFlicClientEvent({
+					fromFlicClientEventPayload({
 						flicClient,
 						eventName: 'batteryStatus',
 					})
 				),
 				(
-					fromFlicClientEvent({
+					fromFlicClientEventPayload({
 						flicClient,
 						eventName: 'bluetoothControllerStateChange',
 					})
 				),
 				(
-					fromFlicClientEvent({
+					fromFlicClientEventPayload({
 						flicClient,
 						eventName: 'buttonConnected',
 					})
 				),
 				(
-					fromFlicClientEvent({
+					fromFlicClientEventPayload({
 						flicClient,
 						eventName: 'buttonDeleted',
 					})
 				),
 				(
-					fromFlicClientEvent({
+					fromFlicClientEventPayload({
 						flicClient,
 						eventName: 'completed',
 					})
 				),
 				(
-					fromFlicClientEvent({
+					fromFlicClientEventPayload({
 						flicClient,
 						eventName: 'connectionStatusChanged',
 					})
 				),
 				(
-					fromFlicClientEvent({
+					fromFlicClientEventPayload({
 						flicClient,
 						eventName: 'createResponse',
 					})
 				),
 				(
-					fromFlicClientEvent({
+					fromFlicClientEventPayload({
 						flicClient,
 						eventName: 'foundPrivateButton',
 					})
 				),
 				(
-					fromFlicClientEvent({
+					fromFlicClientEventPayload({
 						flicClient,
 						eventName: 'foundPublicButton',
 					})
 				),
 				(
-					fromFlicClientEvent({
+					fromFlicClientEventPayload({
 						flicClient,
 						eventName: 'gotSpaceForNewConnection',
 					})
 				),
 				(
-					fromFlicClientEvent({
+					fromFlicClientEventPayload({
 						flicClient,
 						eventName: 'newVerifiedButton',
 					})
 				),
 				(
-					fromFlicClientEvent({
+					fromFlicClientEventPayload({
 						flicClient,
 						eventName: 'noSpaceForNewConnection',
 					})
 				),
 				(
-					fromFlicClientEvent({
+					fromFlicClientEventPayload({
 						flicClient,
 						eventName: 'removed',
 					})
