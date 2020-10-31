@@ -147,8 +147,8 @@ const flicEventLoggerEpic = (
 			.info(
 				(
 					chalk
-					.orangeBright
-					.bgOrange('[Event Log]')
+					.yellowBright
+					.bgYellow('[Event Log]')
 					.concat('\n')
 				),
 				(
