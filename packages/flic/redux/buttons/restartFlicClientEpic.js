@@ -1,5 +1,5 @@
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
-const { mapTo, mergeMap } = require('rxjs/operators')
+const { mapTo, mergeMap, tap } = require('rxjs/operators')
 const { ofType } = require('redux-observable')
 const { timer } = require('rxjs')
 
@@ -18,10 +18,12 @@ const restartFlicClientEpic = (
 		}) => (
 			timer(5000)
 			.pipe(
-				logDebugMessage(
-					`Reconnecting to |||${hostname}|||...`,
-					'greenBright',
-				),
+				tap(() => {
+					logDebugMessage(
+						`Reconnecting to |||${hostname}|||...`,
+						'greenBright',
+					)
+				}),
 				mapTo(
 					startFlicClient({
 						hostname,
