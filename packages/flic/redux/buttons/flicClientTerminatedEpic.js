@@ -1,5 +1,5 @@
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
-const { mapTo, mergeMap } = require('rxjs/operators')
+const { mapTo, mergeMap, tap } = require('rxjs/operators')
 const { ofType } = require('redux-observable')
 
 const fromFlicClientEvent = require('./utils/fromFlicClientEvent')
@@ -23,10 +23,12 @@ const flicClientTerminatedEpic = (
 				flicClient,
 			})
 			.pipe(
-				logDebugMessage(
-					`|||${hostname}||| was terminated.`,
-					'greenBright',
-				),
+				tap(() => {
+					logDebugMessage(
+						`|||${hostname}||| was terminated.`,
+						'greenBright',
+					)
+				}),
 				mapTo(
 					restartFlicClient({
 						flicClient,
