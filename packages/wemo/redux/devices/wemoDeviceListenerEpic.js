@@ -2,6 +2,7 @@ const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { distinctUntilChanged, filter, map, mergeMap, tap } = require('rxjs/operators')
 const { Observable } = require('rxjs')
 
+const logDebugMessage = require('./utils/logDebugMessage')
 const { addDeviceClient } = require('./actions')
 const { selectWemoClient } = require('./selectors')
 
@@ -40,8 +41,9 @@ const wemoDeviceListenerEpic = (
 				tap(({
 					friendlyName,
 				}) => {
-					console.info(
-						friendlyName
+					logDebugMessage(
+						`|||${friendlyName}||| is ready.`,
+						'greenBright',
 					)
 				}),
 				map(device => (
