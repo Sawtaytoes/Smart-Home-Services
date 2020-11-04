@@ -1,8 +1,9 @@
 const { catchEpicError, ofNamespace } = require('@redux-observable-backend/redux-utils')
-const { ignoreElements, mergeMap, switchMap, takeUntil } = require('rxjs/operators')
 const { fromEvent, throwError } = require('rxjs')
+const { ignoreElements, mergeMap, switchMap, takeUntil, tap } = require('rxjs/operators')
 const { ofType } = require('redux-observable')
 
+const logDebugMessage = require('./utils/logDebugMessage')
 const {
 	ADD_DEVICE_CLIENT,
 	REMOVE_DEVICE_CLIENT,
@@ -33,6 +34,14 @@ const errorListenerEpic = (
 						ofNamespace(namespace),
 					)
 				),
+				tap((
+					error,
+				) => {
+					logDebugMessage(
+						`|||${namespace}||| errored:\n|||${error}|||`,
+						'redBright',
+					)
+				}),
 				switchMap(error => (
 					throwError(`
 						${deviceClient.device.friendlyName}
