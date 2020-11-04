@@ -71,7 +71,7 @@ const toggleGroupsEpic = (
 							)
 							? (
 								console
-								.warn(
+								.info(
 									(
 										chalk
 										.redBright('[MISSING GROUP]')

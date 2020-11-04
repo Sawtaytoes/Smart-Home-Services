@@ -60,7 +60,7 @@ const turnOffGroupsEpic = (
 							)
 							? (
 								console
-								.warn(
+								.info(
 									chalk
 									.redBright(
 										'[MISSING GROUP]'

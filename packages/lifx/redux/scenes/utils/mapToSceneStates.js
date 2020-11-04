@@ -27,7 +27,7 @@ const logSceneName = (
 	)
 	: (
 		console
-		.warn(
+		.info(
 			chalk
 			.redBright(
 				'[MISSING SCENE]'
