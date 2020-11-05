@@ -249,7 +249,7 @@ const ACTION_SET = {
 		[PRESS.TRIPLE_HOLD]: [{
 			action: ACTION.TURN_OFF_GROUP,
 			device: DEVICE.LIFX,
-			name: NAME.KIDS_BATHROOM,
+			name: NAME.GUEST_BATHROOM,
 		}, {
 			action: ACTION.TURN_OFF_GROUP,
 			device: DEVICE.LIFX,
