@@ -4,14 +4,15 @@ const { mapTo, mergeMap, take, tap } = require('rxjs/operators')
 const { ofType } = require('redux-observable')
 
 const fromFlicClientEvent = require('./utils/fromFlicClientEvent')
-const { FLIC_CLIENT_ADDED, restartFlicClient } = require('./actions')
+const logDebugMessage = require('./utils/logDebugMessage')
+const { ADDED_FLIC_CLIENT, restartFlicClient } = require('./actions')
 
 const newButtonAddedEpic = (
 	action$,
 ) => (
 	action$
 	.pipe(
-		ofType(FLIC_CLIENT_ADDED),
+		ofType(ADDED_FLIC_CLIENT),
 		mergeMap(({
 			flicClient,
 			hostname,
