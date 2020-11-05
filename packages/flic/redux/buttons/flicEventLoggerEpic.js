@@ -111,12 +111,6 @@ const flicEventLoggerEpic = (
 				(
 					fromFlicClientEventPayload({
 						flicClient,
-						eventName: 'newVerifiedButton',
-					})
-				),
-				(
-					fromFlicClientEventPayload({
-						flicClient,
 						eventName: 'noSpaceForNewConnection',
 					})
 				),
