@@ -25,21 +25,9 @@ const newButtonAddedEpic = (
 			})
 			.pipe(
 				tap(() => {
-					console
-					.info(
-						(
-							chalk
-							.greenBright
-							.bgGreen
-							.bold('[DEBUG]')
-						),
-						(
-							chalk
-							.greenBright(hostname)
-						),
-						(
-							'has a new Flic button.'
-						),
+					logDebugMessage(
+						`|||${hostname}||| has a new Flic button.`,
+						'greenBright',
 					)
 				}),
 				mapTo(
