@@ -15,7 +15,7 @@ const fromFlicClientEvent = ({
 		takeUntilFlicClientTerminated({
 			action$,
 			flicClient,
-		})
+		}),
 	)
 )
 
