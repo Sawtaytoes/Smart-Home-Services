@@ -1,4 +1,3 @@
-const chalk = require('chalk')
 const { catchEpicError } = require('@redux-observable-backend/redux-utils')
 const { mapTo, mergeMap, tap } = require('rxjs/operators')
 const { ofType } = require('redux-observable')
