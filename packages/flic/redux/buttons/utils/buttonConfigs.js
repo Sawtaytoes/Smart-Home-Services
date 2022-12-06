@@ -25,7 +25,7 @@ const buttonConfigs = {
 		location: "Guest Bedroom Closet Entryway",
 	},
 
-	'80:e4:da:72:60:ce': {
+	'80:e4:da:7a:be:10': {
 		...MULTI_ACTION_SET.ALL_LIVING_ROOM,
 		bluetoothHost: "Elderberry-Pi",
 		color: COLOR.BLACK,
