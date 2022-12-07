@@ -283,7 +283,7 @@ const buttonConfigs = {
 		bluetoothHost: "Elderberry-Pi",
 		color: COLOR.BLACK,
 		location: "Kevin's Desk",
-		room: "UNSPECIFIED",
+		room: "Office",
 	},
 
 
