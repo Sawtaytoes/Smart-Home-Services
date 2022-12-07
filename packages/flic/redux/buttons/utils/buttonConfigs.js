@@ -291,37 +291,56 @@ const buttonConfigs = {
 	// Farkleberry-Pi
 	// ------------------------------------
 
-	'80:e4:da:72:5a:41': {
+	'80:e4:da:7a:69:5c': {
+		...ACTION_SET.ENTRYWAY,
+		bluetoothHost: "Elderberry-Pi",
+		color: COLOR.WHITE,
+		location: "Entryway Closet Door",
+		room: "Entryway",
+	},
+
+	'80:e4:da:7a:bf:cb': {
+		...MULTI_ACTION_SET.KITCHEN,
+		bluetoothHost: "Elderberry-Pi",
+		color: COLOR.BLACK,
+		location: "Living Room",
+		room: "Kitchen",
+	},
+
+	'80:e4:da:7a:69:ee': {
+		...ACTION_SET.KITCHEN,
+		bluetoothHost: "Elderberry-Pi",
+		color: COLOR.WHITE,
+		location: "Living Room",
+		room: "Kitchen",
+	},
+
+	'80:e4:da:7a:bf:dd': {
 		...ACTION_SET.BASEMENT,
 		bluetoothHost: "Elderberry-Pi",
 		color: COLOR.BLACK,
 		location: "Basement Door",
-		room: "UNSPECIFIED",
+		room: "Living Room",
 	},
 
-	'80:e4:da:72:60:e2': {
+	'80:e4:da:7a:b4:a5': {
 		...MULTI_ACTION_SET.ALL_LIVING_ROOM,
 		bluetoothHost: "Elderberry-Pi",
 		color: COLOR.BLACK,
-		location: "Living Room Kitchen Entrance",
-		room: "UNSPECIFIED",
+		location: "Kitchen",
+		room: "Living Room",
 	},
 
-	'80:e4:da:72:98:19': {
-		...MULTI_ACTION_SET.KITCHEN,
-		bluetoothHost: "Elderberry-Pi",
-		color: COLOR.WHITE,
-		location: "Living Room Kitchen Entrance",
-		room: "UNSPECIFIED",
-	},
-
-	'80:e4:da:73:64:ab': {
+	'80:e4:da:7a:75:3e': {
 		...ACTION_SET.LIVING_ROOM,
 		bluetoothHost: "Elderberry-Pi",
 		color: COLOR.WHITE,
-		location: "Living Room Kitchen Entrance",
-		room: "UNSPECIFIED",
+		location: "Kitchen",
+		room: "Living Room",
 	},
+
+	// ------------------------------------
+	// ------------------------------------
 }
 
 module.exports = buttonConfigs
