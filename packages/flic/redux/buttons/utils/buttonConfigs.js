@@ -161,84 +161,84 @@ const buttonConfigs = {
 	// Dewberry-Pi
 	// ------------------------------------
 
-	'80:e4:da:72:a8:bc': {
-		...ACTION_SET.LAUNDRY_ROOM,
-		bluetoothHost: "Cherry-Pi",
-		color: COLOR.WHITE,
-		location: "Laundry Room Entryway",
-		room: "UNSPECIFIED",
-	},
-
-	'80:e4:da:72:a8:62': {
-		...ACTION_SET.GUEST_BEDROOM_CLOSET,
-		bluetoothHost: "Dewberry-Pi",
-		color: COLOR.WHITE,
-		location: "Guest Bedroom Closet Entryway",
-		room: "UNSPECIFIED",
-	},
-
-	'80:e4:da:72:3a:24': {
+	'80:e4:da:7a:c0:db': {
 		...MULTI_ACTION_SET.ALL_STAIRWAY,
 		bluetoothHost: "Dewberry-Pi",
 		color: COLOR.BLACK,
-		location: "Bedroom Hallway",
-		room: "UNSPECIFIED",
+		location: "Second Floor Stairway",
+		room: "Bedroom Hallway",
 	},
 
-	'80:e4:da:72:a8:e3': {
-		...ACTION_SET.KIDS_BEDROOM_CLOSET,
-		bluetoothHost: "Dewberry-Pi",
-		color: COLOR.WHITE,
-		location: "Kids Bedroom Closet Entryway",
-		room: "UNSPECIFIED",
-	},
-
-	'80:e4:da:72:63:3c': {
-		...ACTION_SET.GUEST_BATHROOM,
-		bluetoothHost: "Dewberry-Pi",
-		color: COLOR.GREEN,
-		location: "Guest Bathroom Toilet Wall",
-		room: "UNSPECIFIED",
-	},
-
-	'80:e4:da:72:62:29': {
-		...ACTION_SET.GUEST_BATHROOM,
-		bluetoothHost: "Dewberry-Pi",
-		color: COLOR.GREEN,
-		location: "Guest Bedroom Tub Wall",
-		room: "UNSPECIFIED",
-	},
-
-	'80:e4:da:72:45:77': {
+	'80:e4:da:7a:6b:46': {
 		...MULTI_ACTION_SET.GUEST_BEDROOM,
 		bluetoothHost: "Dewberry-Pi",
-		color: COLOR.BLACK,
-		location: "Guest Bedroom Wall",
-		room: "UNSPECIFIED",
+		color: COLOR.WHITE,
+		location: "Bedroom Hallway Door",
+		room: "Guest Bedroom",
 	},
 
-	'80:e4:da:72:ab:3d': {
-		...ACTION_SET.KIDS_BEDROOM_VANITY,
-		bluetoothHost: "Dewberry-Pi",
-		color: COLOR.CYAN,
-		location: "Kids Bedroom Vanity",
-		room: "UNSPECIFIED",
-	},
-
-	'80:e4:da:72:5f:2b': {
-		...MULTI_ACTION_SET.KIDS_BEDROOM,
+	'80:e4:da:7a:a7:06': {
+		...ACTION_SET.GUEST_BATHROOM,
 		bluetoothHost: "Dewberry-Pi",
 		color: COLOR.BLACK,
-		location: "Kids Bedroom Wall",
-		room: "UNSPECIFIED",
+		location: "Guest Bathroom Door",
+		room: "Guest Bedroom",
 	},
 
-	'80:e4:da:73:60:00': {
+	'80:e4:da:7a:be:6d': {
+		...ACTION_SET.GUEST_BEDROOM_CLOSET,
+		bluetoothHost: "Dewberry-Pi",
+		color: COLOR.BLACK,
+		location: "Guest Bedroom Closet Door",
+		room: "Guest Bedroom",
+	},
+
+	'80:e4:da:7a:80:b5': {
 		...ACTION_SET.GUEST_BEDROOM_VANITY,
 		bluetoothHost: "Dewberry-Pi",
-		color: COLOR.CYAN,
+		color: COLOR.WHITE,
 		location: "Guest Bedroom Vanity",
-		room: "UNSPECIFIED",
+		room: "Guest Bedroom",
+	},
+
+	'80:e4:da:7a:70:76': {
+		...MULTI_ACTION_SET.KIDS_BEDROOM,
+		bluetoothHost: "Dewberry-Pi",
+		color: COLOR.WHITE,
+		location: "Bedroom Hallway Door",
+		room: "Kids Bedroom",
+	},
+
+	'80:e4:da:7a:bf:d0': {
+		...ACTION_SET.GUEST_BATHROOM,
+		bluetoothHost: "Dewberry-Pi",
+		color: COLOR.BLACK,
+		location: "Guest Bathroom Door",
+		room: "Kids Bedroom",
+	},
+
+	'80:e4:da:7a:bf:a8': {
+		...ACTION_SET.KIDS_BEDROOM_CLOSET,
+		bluetoothHost: "Dewberry-Pi",
+		color: COLOR.BLACK,
+		location: "Kids Bedroom Closet Door",
+		room: "Kids Bedroom",
+	},
+
+	'80:e4:da:7a:7a:d1': {
+		...ACTION_SET.KIDS_BEDROOM_VANITY,
+		bluetoothHost: "Dewberry-Pi",
+		color: COLOR.WHITE,
+		location: "Kids Bedroom Vanity",
+		room: "Kids Bedroom",
+	},
+
+	'80:e4:da:7a:6e:d0': {
+		...ACTION_SET.LAUNDRY_ROOM,
+		bluetoothHost: "Cherry-Pi",
+		color: COLOR.WHITE,
+		location: "Bedroom Hallway Door",
+		room: "Laundry Room",
 	},
 
 
