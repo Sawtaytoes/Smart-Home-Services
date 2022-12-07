@@ -79,8 +79,86 @@ const buttonConfigs = {
 		room: "Kitchen Bathroom",
 	},
 
+
 	// ------------------------------------
 	// Cherry-Pi
+	// ------------------------------------
+
+	'80:e4:da:7a:c1:0b': {
+		...ACTION_SET.ASHLEE_VANITY,
+		bluetoothHost: "Cherry-Pi",
+		color: COLOR.BLACK,
+		location: "Ashlee's Vanity",
+		room: "Master Bathroom",
+	},
+
+	'80:e4:da:7a:bf:a2': {
+		...ACTION_SET.KEVIN_VANITY,
+		bluetoothHost: "Cherry-Pi",
+		color: COLOR.BLACK,
+		location: "Kevin's Vanity",
+		room: "Master Bathroom",
+	},
+
+	'80:e4:da:7a:76:81': {
+		...MULTI_ACTION_SET.MASTER_BATHROOM,
+		bluetoothHost: "Cherry-Pi",
+		color: COLOR.WHITE,
+		location: "Master Bathroom Door",
+		room: "Master Bathroom",
+	},
+
+	'80:e4:da:7a:69:e2': {
+		...ACTION_SET.SHOWER,
+		bluetoothHost: "Cherry-Pi",
+		color: COLOR.WHITE,
+		location: "Master Shower",
+		room: "Master Bathroom",
+	},
+
+	'80:e4:da:7a:be:69': {
+		...ACTION_SET.MASTER_TOILET,
+		bluetoothHost: "Cherry-Pi",
+		color: COLOR.BLACK,
+		location: "Master Toilet Door",
+		room: "Master Bathroom",
+	},
+
+	'80:e4:da:7a:70:05': {
+		...ACTION_SET.MASTER_CLOSET,
+		bluetoothHost: "Cherry-Pi",
+		color: COLOR.WHITE,
+		location: "Master Bathroom",
+		room: "Master Closet",
+	},
+
+	'80:e4:da:7a:6e:c4': {
+		...MULTI_ACTION_SET.MASTER_BEDROOM,
+		bluetoothHost: "Cherry-Pi",
+		color: COLOR.WHITE,
+		location: "Bedroom Hallway Door",
+		room: "Master Bedroom",
+	},
+
+	'80:e4:da:7a:69:88': {
+		...MULTI_ACTION_SET.MASTER_BATHROOM,
+		bluetoothHost: "Cherry-Pi",
+		color: COLOR.BLACK,
+		location: "Master Bathroom Door",
+		room: "Master Bedroom",
+	},
+
+	'80:e4:da:7a:a8:3f': {
+		...MULTI_ACTION_SET.MASTER_BEDROOM,
+		bluetoothHost: "Cherry-Pi",
+		color: COLOR.WHITE,
+		location: "Mather Bathroom Door",
+		room: "Master Bedroom",
+	},
+
+
+	// ------------------------------------
+	// Dewberry-Pi
 	// ------------------------------------
 
 	'80:e4:da:72:a8:bc': {
@@ -90,85 +168,6 @@ const buttonConfigs = {
 		location: "Laundry Room Entryway",
 		room: "UNSPECIFIED",
 	},
-
-
-	'80:e4:da:72:3c:c9': {
-		...ACTION_SET.ASHLEE_VANITY,
-		bluetoothHost: "Cherry-Pi",
-		color: COLOR.BLACK,
-		location: "Ashlee's Vanity",
-		room: "UNSPECIFIED",
-	},
-
-
-	'80:e4:da:72:35:d3': {
-		...ACTION_SET.KEVIN_VANITY,
-		bluetoothHost: "Cherry-Pi",
-		color: COLOR.BLACK,
-		location: "Kevin's Vanity",
-		room: "UNSPECIFIED",
-	},
-
-	'80:e4:da:72:a3:49': {
-		...MULTI_ACTION_SET.MASTER_BATHROOM,
-		bluetoothHost: "Cherry-Pi",
-		color: COLOR.CYAN,
-		location: "Master Bathroom Entrance",
-		room: "UNSPECIFIED",
-	},
-
-	'80:e4:da:72:4d:eb': {
-		...MULTI_ACTION_SET.MASTER_BEDROOM,
-		bluetoothHost: "Cherry-Pi",
-		color: COLOR.BLACK,
-		location: "Ashlee's Bedstand",
-		room: "UNSPECIFIED",
-	},
-
-	'80:e4:da:72:40:7c': {
-		...MULTI_ACTION_SET.MASTER_BEDROOM,
-		bluetoothHost: "Cherry-Pi",
-		color: COLOR.BLACK,
-		location: "Kevin's Bedstand",
-		room: "UNSPECIFIED",
-	},
-
-	'80:e4:da:72:a5:96': {
-		...ACTION_SET.MASTER_CLOSET,
-		bluetoothHost: "Cherry-Pi",
-		color: COLOR.CYAN,
-		location: "Master Bedroom Closet Doorway",
-		room: "UNSPECIFIED",
-	},
-
-	'80:e4:da:72:a8:60': {
-		...ACTION_SET.SHOWER,
-		bluetoothHost: "Cherry-Pi",
-		color: COLOR.WHITE,
-		location: "Master Bedroom Shower Entryway",
-		room: "UNSPECIFIED",
-	},
-
-	'80:e4:da:72:af:40': {
-		...ACTION_SET.MASTER_TOILET,
-		bluetoothHost: "Cherry-Pi",
-		color: COLOR.CYAN,
-		location: "Master Bathroom Toilet Area",
-		room: "UNSPECIFIED",
-	},
-
-	'80:e4:da:73:5f:8b': {
-		...MULTI_ACTION_SET.MASTER_BEDROOM,
-		bluetoothHost: "Cherry-Pi",
-		color: COLOR.BLACK,
-		location: "Master Bedroom Entrance",
-		room: "UNSPECIFIED",
-	},
-
-
-	// ------------------------------------
-	// Dewberry-Pi
-	// ------------------------------------
 
 	'80:e4:da:72:a8:62': {
 		...ACTION_SET.GUEST_BEDROOM_CLOSET,
@@ -241,6 +240,7 @@ const buttonConfigs = {
 		location: "Guest Bedroom Vanity",
 		room: "UNSPECIFIED",
 	},
+
 
 	// ------------------------------------
 	// Elderberry-Pi
@@ -333,6 +333,7 @@ const buttonConfigs = {
 		location: "Kevin's Desk for Testing",
 		room: "UNSPECIFIED",
 	},
+
 
 	// ------------------------------------
 	// Farkleberry-Pi
