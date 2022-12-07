@@ -168,9 +168,7 @@ const NAME = {
 	BRIGHT_OFFICE: 'Bright Office',
 	LATE_NIGHT_OFFICE: 'Late Night Office',
 
-	COLISSIO_SPEAKERS: 'Colissio Speakers',
 	LATE_NIGHT_COMPUTING: 'Late Night Computing',
-	STREAMING_LIGHTS: 'Streaming Lights',
 }
 
 const getStandardLightingActionSet = (
@@ -332,38 +330,17 @@ const ACTION_SET = {
 	BASEMENT: getStandardLightingActionSet('BASEMENT'),
 
 	COLISSIO: {
-		[PRESS.SINGLE]: {
-			action: ACTION.TOGGLE_DEVICE,
-			device: DEVICE.WEMO,
-			name: NAME.COLISSIO_SPEAKERS,
-		},
-		[PRESS.DOUBLE]: {
-			action: ACTION.TOGGLE_DEVICE,
-			device: DEVICE.WEMO,
-			name: NAME.STREAMING_LIGHTS,
-		},
+		...(
+			combineSets([
+				ACTION_SET.LIVING_ROOM,
+				ACTION_SET.OFFICE,
+			])
+		),
 		[PRESS.SINGLE_HOLD]: {
 			action: ACTION.TOGGLE_SCENE,
 			device: DEVICE.LIFX,
 			name: NAME.LATE_NIGHT_COMPUTING,
 		},
-		[PRESS.DOUBLE_HOLD]: [{
-			action: ACTION.TURN_OFF_GROUP,
-			device: DEVICE.LIFX,
-			name: NAME.LIVING_ROOM,
-		}, {
-			action: ACTION.TURN_OFF_GROUP,
-			device: DEVICE.LIFX,
-			name: NAME.OFFICE,
-		}, {
-			action: ACTION.TURN_OFF_DEVICE,
-			device: DEVICE.WEMO,
-			name: NAME.COLISSIO_SPEAKERS,
-		}, {
-			action: ACTION.TURN_OFF_DEVICE,
-			device: DEVICE.WEMO,
-			name: NAME.STREAMING_LIGHTS,
-		}],
 	},
 
 	DINING_ROOM: getStandardLightingActionSet('DINING_ROOM'),
