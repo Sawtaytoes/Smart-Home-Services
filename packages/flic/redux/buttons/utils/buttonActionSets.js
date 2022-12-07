@@ -359,19 +359,24 @@ const ACTION_SET = {
 
 	KITCHEN_SINK: {
 		[PRESS.SINGLE]: {
-			action: ACTION.TOGGLE_DEVICE,
-			device: DEVICE.WEMO,
-			name: NAME.GARBAGE_DISPOSAL,
-		},
-		[PRESS.DOUBLE]: {
 			action: ACTION.TOGGLE_SCENE,
 			device: DEVICE.LIFX,
 			name: NAME.WASHING_DISHES,
 		},
+		[PRESS.DOUBLE]: {
+			action: ACTION.TOGGLE_SCENE,
+			device: DEVICE.LIFX,
+			name: NAME.NORMAL_KITCHEN,
+		},
 		[PRESS.SINGLE_HOLD]: {
-			action: ACTION.TOGGLE_DEVICE,
-			device: DEVICE.WEMO,
-			name: NAME.GARBAGE_DISPOSAL,
+			action: ACTION.TURN_OFF_DEVICE,
+			device: DEVICE.LIFX,
+			name: NAME.KITCHEN_SINK,
+		},
+		[PRESS.DOUBLE_HOLD]: {
+			action: ACTION.TURN_OFF_GROUP,
+			device: DEVICE.LIFX,
+			name: NAME.KITCHEN,
 		},
 	},
 
