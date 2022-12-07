@@ -328,21 +328,6 @@ const ACTION_SET = {
 	),
 
 	BASEMENT: getStandardLightingActionSet('BASEMENT'),
-
-	COLISSIO: {
-		...(
-			combineSets([
-				ACTION_SET.LIVING_ROOM,
-				ACTION_SET.OFFICE,
-			])
-		),
-		[PRESS.SINGLE_HOLD]: {
-			action: ACTION.TOGGLE_SCENE,
-			device: DEVICE.LIFX,
-			name: NAME.LATE_NIGHT_COMPUTING,
-		},
-	},
-
 	DINING_ROOM: getStandardLightingActionSet('DINING_ROOM'),
 	EAT_IN_KITCHEN: getStandardLightingActionSet('EAT_IN_KITCHEN'),
 	ENTRYWAY: getStandardLightingActionSet('ENTRYWAY'),
@@ -533,6 +518,20 @@ const MULTI_ACTION_SET = {
 			ACTION_SET.HALLWAY,
 		])
 	),
+
+	COLISSIO: {
+		...(
+			combineSets([
+				ACTION_SET.LIVING_ROOM,
+				ACTION_SET.OFFICE,
+			])
+		),
+		[PRESS.SINGLE_HOLD]: {
+			action: ACTION.TOGGLE_SCENE,
+			device: DEVICE.LIFX,
+			name: NAME.LATE_NIGHT_COMPUTING,
+		},
+	},
 
 	GUEST_BEDROOM: (
 		combineSets([

@@ -279,7 +279,7 @@ const buttonConfigs = {
 	},
 
 	'80:e4:da:7a:be:10': {
-		...ACTION_SET.COLISSIO,
+		...MULTI_ACTION_SET.COLISSIO,
 		bluetoothHost: "Elderberry-Pi",
 		color: COLOR.BLACK,
 		location: "Kevin's Desk",
