@@ -279,7 +279,7 @@ const buttonConfigs = {
 	},
 
 	'80:e4:da:7a:be:10': {
-		...ACTION_SET.DESKTOP_PC,
+		...MULTI_ACTION_SET.DESKTOP_PC,
 		bluetoothHost: "Elderberry-Pi",
 		color: COLOR.BLACK,
 		location: "Kevin's Desk",
