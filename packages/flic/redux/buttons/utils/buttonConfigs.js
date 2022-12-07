@@ -140,7 +140,7 @@ const buttonConfigs = {
 		room: "Master Bedroom",
 	},
 
-	'80:e4:da:7a:69:88': {
+	'80:e4:da:7a:a8:3f': {
 		...MULTI_ACTION_SET.MASTER_BATHROOM,
 		bluetoothHost: "Cherry-Pi",
 		color: COLOR.BLACK,
@@ -148,7 +148,7 @@ const buttonConfigs = {
 		room: "Master Bedroom",
 	},
 
-	'80:e4:da:7a:a8:3f': {
+	'80:e4:da:7a:69:88': {
 		...MULTI_ACTION_SET.MASTER_BEDROOM,
 		bluetoothHost: "Cherry-Pi",
 		color: COLOR.WHITE,
