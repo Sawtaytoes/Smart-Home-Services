@@ -23,7 +23,7 @@ const buttonConfigs = {
 		room: "Dining Room",
 	},
 
-	'# 80:e4:da:7a:71:81': {
+	'80:e4:da:7a:71:81': {
 		...ACTION_SET.EAT_IN_KITCHEN,
 		bluetoothHost: "Blueberry-Pi",
 		color: COLOR.WHITE,
