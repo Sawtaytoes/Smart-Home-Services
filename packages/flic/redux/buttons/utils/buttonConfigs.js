@@ -48,7 +48,7 @@ const buttonConfigs = {
 	},
 
 	'80:e4:da:7a:be:3b': {
-		...MULTI_ACTION_SET.ALL_KITCHEN,
+		...MULTI_ACTION_SET.ALL_KITCHEN_GARAGE,
 		bluetoothHost: "Blueberry-Pi",
 		color: COLOR.BLACK,
 		location: "Garage Kitchen Door",
@@ -56,7 +56,7 @@ const buttonConfigs = {
 	},
 
 	'80:e4:da:7a:69:86': {
-		...MULTI_ACTION_SET.KITCHEN,
+		...MULTI_ACTION_SET.ALL_KITCHEN,
 		bluetoothHost: "Blueberry-Pi",
 		color: COLOR.WHITE,
 		location: "Garage Kitchen Door",
@@ -300,7 +300,7 @@ const buttonConfigs = {
 	},
 
 	'80:e4:da:7a:bf:cb': {
-		...MULTI_ACTION_SET.KITCHEN,
+		...MULTI_ACTION_SET.ALL_KITCHEN,
 		bluetoothHost: "Elderberry-Pi",
 		color: COLOR.BLACK,
 		location: "Living Room",
