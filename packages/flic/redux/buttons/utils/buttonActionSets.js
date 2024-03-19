@@ -33,11 +33,11 @@ const NAME = {
 	BRIGHT_DINING_ROOM: 'Bright Dining Room',
 	LATE_NIGHT_DINING_ROOM: 'Late Night Dining Room',
 
-	// Eat-In Kitchen
-	EAT_IN_KITCHEN: 'Eat-In Kitchen',
-	NORMAL_EAT_IN_KITCHEN: 'Normal Eat-In Kitchen',
-	BRIGHT_EAT_IN_KITCHEN: 'Bright Eat-In Kitchen',
-	LATE_NIGHT_EAT_IN_KITCHEN: 'Late Night Eat-In Kitchen',
+	// Eat-in Kitchen
+	EAT_IN_KITCHEN: 'Eat-in Kitchen',
+	NORMAL_EAT_IN_KITCHEN: 'Normal Eat-in Kitchen',
+	BRIGHT_EAT_IN_KITCHEN: 'Bright Eat-in Kitchen',
+	LATE_NIGHT_EAT_IN_KITCHEN: 'Late Night Eat-in Kitchen',
 
 	// Entryway
 	ENTRYWAY: 'Entryway',
