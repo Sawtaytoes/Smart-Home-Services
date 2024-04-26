@@ -2656,9 +2656,9 @@ flatted@^2.0.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-2.0.1.tgz#69e57caa8f0eacbc281d2e2cb458d46fdb449e08"
   integrity sha512-a1hQMktqW9Nmqr5aktAux3JMNqaucxGcjtjWnZLHX7yyPCmlSV3M54nGYbqT8K+0GhF3NBgmJCc3ma+WOgX8Jg==
 
-"fliclib@git+https://github.com/50ButtonsEach/fliclib-linux-hci.git#73a8acb1531ad1b33480b4234ffff0a290d8a1aa":
+"fliclib@git+https://github.com/50ButtonsEach/fliclib-linux-hci.git#f96d7a8658ba762d811c5f73ed0ed5be6c8c2cf1":
   version "0.0.0"
-  resolved "git+https://github.com/50ButtonsEach/fliclib-linux-hci.git#73a8acb1531ad1b33480b4234ffff0a290d8a1aa"
+  resolved "git+https://github.com/50ButtonsEach/fliclib-linux-hci.git#f96d7a8658ba762d811c5f73ed0ed5be6c8c2cf1"
 
 flush-write-stream@^1.0.0:
   version "1.1.1"
